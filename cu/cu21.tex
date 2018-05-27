@@ -1,0 +1,44 @@
+\begin{UseCase}{CU21}{Cambiar datos de sucursal}{
+		Realizar cambios en la información de una sucursal.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{Modificar los datos de la sucursal para mantenerla actualizada.}
+		\UCitem{Entradas}{Nombre del Empleado, Id de Empleado}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{No Aplica.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Debe existir dicha sucursal.}
+		\UCitem{Postcondiciones}{Los datos de la sucursal deberan cambiar y en escencia estar actualizados.}
+		\UCitem{Errores}{La pagina sera inaccedible por el momento debido a fallas con los servidores.}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+
+
+%--------------------------------------
+
+
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se extiende del caso de uso \UCref{CU0} paso 11
+		\UCpaso[\UCactor] Selecciona la opcion Sucursales presionando el boton \IUbutton{Sucursales}.
+		\UCpaso Dspliega la pantalla de Sucursales.
+		\UCpaso[\UCactor] Selecciona la opcion Editar, de la sucursal que desea cambair los datos presionando el boton \IUbutton{Editar} que esta representado con un lapiz amarillo.
+		\UCpaso Genera y Despliega los datos de la sucursal para su edición. 
+		\UCpaso[\UCactor] Realiza los cambios que desea modificar en la sucursal y confirma al presionar el boton\IUbutton{Actualizar} . \Trayref{A}
+		\UCpaso Guarda los cambios y redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueno}.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{A}{Error al cambiar el estado.}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Hubo un error en la operación}] ''.
+			
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+

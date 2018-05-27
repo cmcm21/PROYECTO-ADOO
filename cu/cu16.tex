@@ -1,0 +1,44 @@
+\begin{UseCase}{CU16}{Activar estado de paquete de descuento}{
+		Por razones laborales, es mejor activar el estado de un paquete de descuentos cuando sea necesario.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{Permitir realizar cambios en los paquetes de descuentos.}
+		\UCitem{Entradas}{Nombre del Empleado, Id de Empleado}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{No Aplica.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Debe existir un paquete de descuento registrado previamente y deberá estar desactivado.}
+		\UCitem{Postcondiciones}{El paquete de descuento debera cambiar de desactivado a activado.}
+		\UCitem{Errores}{La pagina sera inaccedible por el momento debido a fallas con los servidores.}
+		\UCitem{Tipo}{Caso de uso secundario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+
+
+%--------------------------------------
+
+
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se extiende del caso de uso \UCref{CU0} paso 11
+		\UCpaso[\UCactor] Selecciona la opción paquetes de descuento presionando el boton \IUbutton{Paquetes de descuento}.
+		\UCpaso Lista los paquetes de descuento que estan registrados. 
+		\UCpaso[\UCactor] Selecciona la opcion Activar estado, del paquete de descuentos que desea activar presionando el boton \IUbutton{Activar} que esta representado con una palomita azul.		
+		\UCpaso Genera y despliega una pantalla de confirmación.  {\bf MSG3-}.
+		\UCpaso[\UCactor] Confirma la acción seleccionando el boton\IUbutton{Si, Activar} . \Trayref{A}
+		\UCpaso Guarda los cambios y redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueno}.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{A}{Error al cambiar el estado.}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Hubo un error en la operación}] ''.
+			
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+
