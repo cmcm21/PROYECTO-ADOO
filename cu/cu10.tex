@@ -1,0 +1,44 @@
+\begin{UseCase}{CU10}{Agregar Nuevo Medicamento}{
+		Se requiere una interfaz para agregar un medicamento de forma sencilla y rápida.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Vázquez Cruz Fernando Darwin }
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{Que el Dueño pueda agregar un nuevo medicamento a la base de datos para que las sucursales puedan recibir y vender dicho medicamento.}
+		\UCitem{Entradas}{Datos del medicamento.}
+		\UCitem{Origen}{Teclado, Mouse}
+		\UCitem{Salidas}{Mensaje de confirmación de registro de medicamento.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{El medicamento no debe estar registrado ya en el sistema.}
+		\UCitem{Postcondiciones}{Se agregará a la base de datos un nuevo medicamento.}
+		\UCitem{Errores}{El medicamento no puede ser agregado.}
+		\UCitem{Tipo}{Caso de uso primario.}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{Revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se incluye el caso de uso \UCref{CU1}.
+		\UCpaso Despliega la \IUref {IU1} {Pantalla Principal}.
+		\UCpaso[\UCactor] Ve los medicamentos disponibles dando clic en el\Ibutton {+ Medicamento } .
+		\UCpaso Despliega la \IUref {IU17} {Tabla de Medicamentos}.
+		\UCpaso[\UCactor] Presiona el \Ibutton {+ Nuevo }.
+		\UCpaso Despliega la \IUref {IU5} {Formulario Medicamento}.
+		\UCpaso [\UCactor] Llena los campos requeridos para registrar un nuevo medicamento. 
+		\UCpaso[\UCactor] Da clic en el \Ibutton {+ Guardar } .
+		\UCpaso Despliega el mensaje \bf {+ MSG0}. \Trayref{A}
+		\UCpaso Guarda los datos del nuevo empleado y actualiza la lista de empleados.
+		\UCpaso[\UCactor] Da clic en el \Ibutton {+ Ok }.
+		\UCpaso Re-direcciona al \UCactor a la \IUref {IU17} {Tabla de Medicamentos}.
+	
+	\end{UCtrayectoria}
+
+
+		\begin{UCtrayectoriaA}{A}{El Empleado no puede ser agregado}
+			\UCpaso Despliega el mensaje \bf {+ MSG1 }.
+			\UCpaso[\UCactor] Da clic en el \Ibutton {+ Ok }.
+			\UCpaso Continua en el paso 5 del \UCref{CU10}.
+		\end{UCtrayectoriaA}
+
+%--------------------------------------
