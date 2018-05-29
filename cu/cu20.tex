@@ -1,0 +1,44 @@
+\begin{UseCase}{CU20}{Desactivar estado de sucursal}{
+		Se desactiva cuando la sucursal no estara en operación.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{Desabilitar la sucursal debido a que dejara de de estar en funcionamiento.}
+		\UCitem{Entradas}{Nombre del Empleado, Id de Empleado}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{No Aplica.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Debe existir dicha sucursal y debe estar activada.}
+		\UCitem{Postcondiciones}{El estado de la sucursal debera cambiar de activada a desactivada.}
+		\UCitem{Errores}{La pagina sera inaccedible por el momento debido a fallas con los servidores.}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+
+
+%--------------------------------------
+
+
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se extiende del caso de uso \UCref{CU0} paso 11
+		\UCpaso[\UCactor] Selecciona la opcion Sucursales presionando el boton \IUbutton{Sucursales}.
+		\UCpaso Dspliega la pantalla de Sucursales.
+		\UCpaso[\UCactor] Selecciona la opcion Desactivar sucursal, de la sucursal que desea activar presionando el boton \IUbutton{Dctivar} que esta representado con un bote de basura rojo.		
+		\UCpaso Genera y despliega una pantalla de confirmación.  {\bf MSG3-}.
+		\UCpaso[\UCactor] Confirma la acción seleccionando el boton\IUbutton{Si, Desactivar} . \Trayref{A}
+		\UCpaso Guarda los cambios y redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueno}.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{A}{Error al cambiar el estado.}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Hubo un error en la operación}] ''.
+			
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+
