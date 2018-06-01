@@ -1,0 +1,36 @@
+\begin{UseCase}{CU26}{Modificar Medicamento}{
+	Corregir Errores en medicamentos registrados y modificar los precios de medicamentos.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Supervisor}}
+		\UCitem{Propósito}{Tener los medicamentos registrados con datos correctos	}
+		\UCitem{Entradas}{datos Correctos}
+		\UCitem{Origen}{teclado}
+		\UCitem{Salidas}{Medicamento actualizado}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{Que el medicamento este registrado}
+		\UCitem{Postcondiciones}{Medicamentos con datos correctos}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso Se Incluye el caso de uso \UCref{CU12} 
+		\UCpaso [\UCactor] Presiona el botón de editar\IUref{IU11}{botón editar} en la columna de opciones en la fila del medicamento a editar
+		\UCpaso Muestra el formulario de medicamento \IUref{IU5}{Formulario de Medicamentos} con los datos del medicamento seleccionado
+		\UCpaso [\UCactor] Modifica el dato que esta incorrecto.
+		\UCpaso [\UCactor] Guarda los cambios oprimiendo el botón \IUbutton{Actualizar}
+		\UCpaso Verifica que los campos obligatorios no estén vacíos\Trayref{A}
+		\UCpaso Guarda los cambios en el sistema 
+	\end{UCtrayectoria}
+
+
+\begin{UCtrayectoriaA}{A}{Algún campo obligatorio esta vació}
+	\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}

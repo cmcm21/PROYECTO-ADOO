@@ -1,0 +1,44 @@
+\begin{UseCase}{CU25}{Reportes De Ventas}{
+	Tener un control del Medicamento Vendido.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Supervisor}}
+		\UCitem{Propósito}{Tener información necesaria para poder administrar la  o las Sucursales}
+		\UCitem{Entradas}{La Sucursal(es) de la(s) que se requiere el Reporte}
+		\UCitem{Origen}{mouse,teclado}
+		\UCitem{Salidas}{pantalla,impresora}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Tener Permisos de Supervisor}
+		\UCitem{Postcondiciones}{Se tiene información de las ventas}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso[\UCactor] Selecciona La opción de Reporte de ventas por día presionando el botón \IUbutton{Reportes De Ventas al día}.extiende al \UCref{CU24}
+		\UCpaso [\UCactor] Selecciona la opción de Reporte de ventas por mes
+		presionando el botón \IUbutton{Reportes de Ventas del mes}.extiende al\UCref{CU25} 
+		\UCpaso Verifica Que el [\UCactor] Tenga Permisos de Supervisor.\Trayref{A}
+		\UCpaso Verifica las Sucursales del proveedor y las muestra.\Trayref{B}
+		\UCpaso [\UCactor] Selecciona la Sucursal de la Cual quiere el reporte de Ventas
+		\UCpaso Verifica que la apertura y funcionamiento en el sistema de la sucursal seleccionada sea mayor al lapso de 1 día \UCref{CU24} o mayor a 30 días\UCref{CU23} \Trayref{B}
+		\UCpaso Muestra en otra pantalla Un documento .pdf el cual desglosa los datos de todas las ventas realizadas por día o por mes
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+
+\begin{UCtrayectoriaA}{A}{Permiso Denegado.}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Permiso Denegado\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+%---------------------------------------------------------------------------
+\begin{UCtrayectoriaA}{B}{Operación Cancelada}
+	\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}

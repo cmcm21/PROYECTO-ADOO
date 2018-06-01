@@ -3,19 +3,19 @@
 	}
 		\UCitem{Versión}{\color{Gray}0.1.2}
 		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
-		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Supervisa}{\color{Gray}Correa Medina Carlos Miguel}
 		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
 		\UCitem{Propósito}{Evitar realizar cambios en los paquetes de descuentos cuando no sea necesario.}
 		\UCitem{Entradas}{Nombre del Empleado, Id de Empleado}
 		\UCitem{Origen}{Teclado}
 		\UCitem{Salidas}{No Aplica.}
 		\UCitem{Destino}{Pantalla}
-		\UCitem{Precondiciones}{Debe existir un paquete de descuento registrado previamente y debera estar activado.}
-		\UCitem{Postcondiciones}{El paquete de descuento debera cambiar de activado a desactivado.}
-		\UCitem{Errores}{La pagina sera inaccedible por el momento debido a fallas con los servidores.}
+		\UCitem{Precondiciones}{Debe existir un paquete de descuento registrado previamente y deberá estar activado.}
+		\UCitem{Postcondiciones}{El paquete de descuento deberá cambiar de activado a desactivado.}
+		\UCitem{Errores}{La pagina sera inaccesible por el momento debido a fallas con los servidores.}
 		\UCitem{Tipo}{Caso de uso secundario}
 		\UCitem{Observaciones}{}
-		\UCitem{Estado}{En revision}
+		\UCitem{Estado}{Aprobado}
 	\end{UseCase}
 
 
@@ -23,13 +23,12 @@
 
 
 	\begin{UCtrayectoria}{Principal}
-		\UCpaso Se extiende del caso de uso \UCref{CU0} paso 11
-		\UCpaso[\UCactor] Selecciona la opción paquetes de descuento presionando el boton \IUbutton{Paquetes de descuento}.
-		\UCpaso Lista los paquetes de descuento que estan registrados. 
-		\UCpaso[\UCactor] Selecciona la opcion Desctivar estado, del paquete de descuentos que desea desactivar presionando el boton \IUbutton{Desactivar} que esta representado con un bote de basura rojo.		
+		\UCpaso Se incluye el caso de uso \UCref{CU1}.
+		\UCpaso Se incluye el caso de uso \UCref{CU42}.
+		\UCpaso[\UCactor] Selecciona la opción Desactivar estado, del paquete de descuentos que desea desactivar presionando el botón \IUref{IU9}{boton desactivar} que esta representado con un bote de basura rojo.		
 		\UCpaso Genera y despliega una pantalla de confirmación.  {\bf MSG3-} .
-		\UCpaso[\UCactor] Confirma la acción seleccionando el boton\IUbutton{Si, Desactivar} . \Trayref{A}
-		\UCpaso Guarda los cambios y redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueno}.
+		\UCpaso[\UCactor] Confirma la acción seleccionando el botón\IUbutton{Si, Desactivar} . \Trayref{A}
+		\UCpaso Guarda los cambios y redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueño}.
 	\end{UCtrayectoria}
 
 

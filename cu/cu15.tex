@@ -3,7 +3,7 @@
 	}
 		\UCitem{Versión}{\color{Gray}0.1.2}
 		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
-		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Supervisa}{\color{Gray}Correa Medina Carlos Miguel}
 		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
 		\UCitem{Propósito}{Realizar cambios en los paquetes de descuentos ya publicados.}
 		\UCitem{Entradas}{Nombre del Empleado, Id de Empleado}
@@ -11,11 +11,11 @@
 		\UCitem{Salidas}{No Aplica.}
 		\UCitem{Destino}{Pantalla}
 		\UCitem{Precondiciones}{Debe existir un paquete de descuento registrado previamente.}
-		\UCitem{Postcondiciones}{El paquete de descuento debera cambiar a como estaba previamente.}
-		\UCitem{Errores}{La pagina sera inaccedible por el momento debido a fallas con los servidores, problemas al registrar cambios ne los paquetes.}
+		\UCitem{Postcondiciones}{El paquete de descuento deberá cambiar a como estaba previamente.}
+		\UCitem{Errores}{La pagina sera inaccesible por el momento debido a fallas con los servidores, problemas al registrar cambios ne los paquetes.}
 		\UCitem{Tipo}{Caso de uso primario}
 		\UCitem{Observaciones}{}
-		\UCitem{Estado}{En revision}
+		\UCitem{Estado}{Aprobado}
 	\end{UseCase}
 
 
@@ -23,12 +23,11 @@
 
 
 	\begin{UCtrayectoria}{Principal}
-		\UCpaso Se extiende del caso de uso \UCref{CU0} paso 11
-		\UCpaso[\UCactor] Selecciona la opción paquetes de descuento presionando el boton \IUbutton{Paquetes de descuento}.
-		\UCpaso Lista los paquetes de descuento que estan registrados. 
-		\UCpaso[\UCactor] Selecciona la opcion editar paquetes de descuento presionando el boton \IUbutton{Editar} que esta representado con un lapiz amarillo.
+		\UCpaso Se incluye el caso de uso \UCref{CU1}.
+		\UCpaso Se incluye el caso de uso \UCref{Cu42} 
+		\UCpaso[\UCactor] Selecciona la opción editar paquetes de descuento presionando el botón \IUref{IU11}{boton editar} que esta representado con un lapiz amarillo.
 		\UCpaso Genera y Despliega el paquete de descuentos para su edición. 
-		\UCpaso[\UCactor] Realiza los cambios que desea modificar en el paquete de descuentos y confirma al presiona el boton\IUbutton{Actualizar} . \Trayref{A}
+		\UCpaso[\UCactor] Realiza los cambios que desea modificar en el paquete de descuentos y confirma al presiona el botón \IUbutton{Actualizar} . \Trayref{A}
 		\UCpaso Redirige al [\UCactor] a la  \IUref{01}{Pantalla Principal de Dueno}.
 	\end{UCtrayectoria}
 

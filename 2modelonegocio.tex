@@ -46,6 +46,15 @@ Vía de Administración:  Es la forma en la que el cliente se tiene que aplicar 
 \section{Modelo de Dominio del problema}
 
 	El modelo del dominio del problema se muestra en la figura~\ref{fig:modeloDeDominio}, a continuación se describen cada una de las entidades y sus relaciones.
+	\begin{figure}[htbp!]
+	\begin{center}
+		\includegraphics[width=\textwidth]{images/diagramaRelacional}
+		\caption{Modelo del dominio del problema}
+		\label{fig:modeloDeDominio}
+	\end{center}
+\end{figure}
+
+	
 	
 \begin{figure}[htbp!]
 	\begin{center}
@@ -670,26 +679,8 @@ Vía de Administración:  Es la forma en la que el cliente se tiene que aplicar 
 
 \section{Procesos del Negocio}
 En esta sección se describen los procesos a mejorar con el sistema.
+Para el cambio de turno del empleado, el conteo de cajas y de efectivo se debe hacer en colaboración del empleado del turno anterior así como del siguiente turno, según el caso, el empleado tiene que llegar hasta 15 min antes del horario para hacer efectivo el cambio de responsabilidad de la caja e inventario, en caso de anomalía se le informara al supervisor vía llamada telefónica.En caso de cambio de producto: el cliente tiene que traer el recibo, el producto cerrado(encaso de estar maltratado se recibe y registra directo a cambio con el proveedor antes determinar  el  cambio  con  el  cliente),  si  el  producto  nuevo  tiene  un  precio  menor  se  dala  la  diferencia  en  efectivo,  y  si  el  precio  es  mayor  se  cobra  y  registra,  los  cambios y devoluciones  no  se  ven  reflejados  en  el  inventario,se  registran  después  del  cambio  de turno.Los horarios de los empleados ya están definidos por el supervisor. El supervisor es el encargado de que un proveedor solo haga una entrega a la semana con el producto, y notificar al empleado que dicho pedido ya esta encargado al proveedor correspondiente.
 
-\input{proc/proc01.tex}
-\input{proc/proc02.tex}
-\input{proc/proc03.tex}
-%---------------------------------------------------------
-\section{Modelo de procesos TO-BE}
-
-Los nuevos procesos se presentan en esta sección, el mapa de procesos de se muestra en la figura~\ref{fig:mapaProc}.
-
-\begin{figure}[htbp]
-	\begin{center}
-		\includegraphics[width=.8\textwidth]{images/procMap}
-		\caption{Mapa de procesos}
-		\label{fig:mapaProc}
-	\end{center}
-\end{figure}
-
-\input{proc/proc-m01.tex}
-\input{proc/proc-m02.tex}
-\input{proc/proc-m03.tex}
 
 
 

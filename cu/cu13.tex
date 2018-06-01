@@ -19,16 +19,16 @@
 	\end{UseCase}
 %--------------------------------------
 \begin{UCtrayectoria}{Principal}
-		\UCpaso Se extiende del caso de uso \UCref{CU12} paso 6.
+		\UCpaso Se incluye el caso de uso \UCref{CU12}.
 		\UCpaso[\UCactor] Selecciona el tipo de búsqueda que hará.
 		\UCpaso[\UCactor] Da clic en la barra de búsqueda.
 		\UCpaso [\UCactor] Ingresa nombre del medicamento, código de barras o ingrediente activo según corresponda. 
-		\UCpaso[\UCactor] Da clic en el \Ibutton {+ Buscar }.
+		\UCpaso[\UCactor] Da clic en el \IUbutton {+ Buscar }.
 		\UCpaso Despliega una lista que coincida con la búsqueda realizada. \Trayref{A}
 		\UCpaso[\UCactor] Selecciona el medicamento de la lista.\Trayref{B}
 		\UCpaso[\UCactor] Da clic en la \IUref {IU9} {Botton Desactivar}.
 		\UCpaso Despliega el mensaje \bf {+ MSG2}.
-		\UCpaso[\UCactor] El Dueño da clic en el \Ibutton {+ Si, Desactivalo!} para confirmar la operación.
+		\UCpaso[\UCactor] El Dueño da clic en el \IUbutton {+ Si, Desactivalo!} para confirmar la operación.
 		\UCpaso Actualiza el estado del medicamento y la lista de medicamentos.
 		\UCpaso Re-direcciona al \UCactor a la \IUref {IU17} {Tabla de Medicamentos}.
 	
@@ -41,10 +41,5 @@
 			\UCpaso Continua en el paso 2 del \UCref{CU13}.
 		\end{UCtrayectoriaA}
 		
-		
-		\begin{UCtrayectoriaA}{B}{El Medicamento ya está desactivado}.
-			\UCpaso[\UCactor] Se percata que el medicamento ya está desactivado.
-			\UCpaso[\UCactor] Regresa a la \IUref {IU17} {Tabla de Medicamentos}.
-		\end{UCtrayectoriaA}
 
 %--------------------------------------

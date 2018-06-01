@@ -1,0 +1,37 @@
+\begin{UseCase}{CU44}{Agregar nuevo proveedor}{
+Aveces es conveniente hacer nuevos contratos con nuevo proveedores.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{para poder surtir de la mejor forma la sucursal}
+		\UCitem{Entradas}{datos del formulario \IUref{IU8}{Formulario Proveedor}}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Un nuevo elemento en la tabla proveedor \IUref{IU15}{Tabla proveedores}}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{Que el actor tenga permisos de dueño}
+		\UCitem{Postcondiciones}{no aplica}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso Se incluye el caso de uso \UCref{CU43}
+		\UCpaso [\Ucactor] Oprime el botón \IUbutton{Nuevo}
+		\UCpaso Muestra la pantalla \IUref{IU8}{Formulario proveedores}
+		\UCpaso [\UCactor] llena el formulario con los datos requeridos.
+		\UCpaso [\UCactor] Guarda los cambios oprimiendo el botón \IUbutton{Guardar} \Trayref{A}
+		\UCpaso regresa a la pantalla \IUref{IU1}{pantalla principal}
+		
+	\end{UCtrayectoria}
+
+%--------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{campos vacíos}
+\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+%-----------------------------

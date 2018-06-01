@@ -1,0 +1,37 @@
+\begin{UseCase}{CU22}{Listar Atributos de la Sucursal}{
+	En ocasiones el Dueño de la farmacia necesitara conocer las 
+	Sucursales que tiene Con sus respectivos datos,como las ventas
+	que se han realizado en la sucursal o los medicamentos que se tienen.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{Que el tenga un mejor control de las sucursales con las que cuenta la farmacia.}
+		\UCitem{Entradas}{}
+		\UCitem{Origen}{}
+		\UCitem{Salidas}{Listado de las Sucursales Registradas en el Sistema}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Tener Permisos de Dueño.}
+		\UCitem{Postcondiciones}{El Dueño tiene un mejor conocimiento de la situación económica de la farmacia}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso[\UCactor] Selecciona La opción de ver Lista de Sucursales presionando el boton \IUbutton{Sucursales}.
+		\UCpaso Verifica Que el [\UCactor] Tenga Permisos de Dueño.\Trayref{A}
+		\UCpaso Genera y Despliega una tabla que tiene los atributos de la sucursal como columnas y como filas las Sucursales que están registradas en el sistema.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------:w
+
+\begin{UCtrayectoriaA}{A}{Permiso Denegado.}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Permiso Denegado\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+			

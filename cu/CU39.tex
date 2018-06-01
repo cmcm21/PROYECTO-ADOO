@@ -1,0 +1,45 @@
+\begin{UseCase}{CU39}{Realizar una venta}{
+		El cajero registra en el sistema medicamentos para la venta
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Ingresar al Sistema para poder registra una nueva venta}%no me acuerod como se llaman los clientes registrados
+		\UCitem{Entradas}{Codigo y cantidad de los medicamentos}%nose como  esten viendo este caso revisar
+		\UCitem{Origen}{Teclado, lector de codigo de barras}
+		\UCitem{Salidas}{Se pueden observar los datos ingresados dentro de \IUref{ERROR}{ERROR} } 
+		\UCitem{Destino}{Registro en la BD}
+		\UCitem{Precondiciones}{Solo tener una venta en proceso, estar en las pantallas del cajero}
+		\UCitem{Postcondiciones}{ }
+		\UCitem{Errores}{Error de conexion,veta anterior no concluida}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del cajero.
+		\UCpaso[\UCactor] Tiene que estar en la pestaña de venta.
+		\UCpaso El sistema genera una venta vacia \IUref{ERROR}{ERROR}. 
+		\UCpaso [\UCactor] Proporciona codigo y cantidad de los medicamentos \IUref{ERROR}{ERROR}.
+		\UCpaso El sistema verifica los datos de los medicamentos.\Trayref{A}  \Trayref{B}
+		\UCpaso EL sistema verifica el caso de uso ``CU37 Aplicar un descuento''
+		\UCpaso Presiona el boton Aceptar.%\Trayref{A}.
+		 
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{El codigo del medicamento esta incorrecto}
+			\UCpaso Muestra el Mensaje \IUref{ERROR}{ERROR}.%{\bf MSG03-}`` [{\em correo con formato incorrecto}] Introduzca un correo con el formato xxx@xx.xx .''.
+			\UCpaso El sistema no muestra un nuevo registro en la \IUref{ERROR}{ERROR}.
+			\UCpaso Continúa en el paso 4 del \UCref{CU39}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{La cantidad de medicamentos ingresados son mayores a los que estane en existencias}
+			\UCpaso Muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}.
+			\UCpaso El sistema no muestra un nuevo registro en la \IUref{ERROR}{ERROR}.
+			\UCpaso[] Continua en el paso 4 del \UCref{CU39}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		

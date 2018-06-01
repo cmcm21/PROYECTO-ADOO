@@ -1,0 +1,37 @@
+\begin{UseCase}{CU41}{Activar estado del cliente}{
+		El cajero cambia el estado del cliente a activo
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Ingresar al Sistema para poder cambiar el estado del cliente a activo}%no me acuerod como se llaman los clientes registrados
+		\UCitem{Entradas}{Cliente}%nose como  esten viendo este caso revisar
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{ }
+		\UCitem{Destino}{Registro en el sistema BD}
+		\UCitem{Precondiciones}{Tener al cliente registrado, estar en las pantallas del cajero}
+		\UCitem{Postcondiciones}{El estad del cliente habra cambiado}
+		\UCitem{Errores}{Error de conexion, no se encontro registro del cliente}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del cajero.
+		\UCpaso[\UCactor] Tiene que estar en la pestaña activar cliente.
+		\UCpaso El sistema solicita clientes al cajero\Trayref{B}. 
+		\UCpaso El [\UCactor] proporciona los datos requeridos del cliente con al pantalla \IUref{ERROR}{ERROR}.
+		\UCpaso El sistema pide confirmacion con al pantalla \IUref{ERROR}{ERROR}
+		\UCpaso Presiona el boton Aceptar.\Trayref{A}.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{El cajero da en cancelar}
+			\UCpaso Continúa en el paso 3 del \UCref{CU41}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{El cajero da en cancelar}
+			\UCpaso[] Fin del caso de uso \UCref{CU41}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------

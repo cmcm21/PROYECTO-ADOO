@@ -1,0 +1,36 @@
+\begin{UseCase}{CU44}{Activar el estado del proveedor}{
+Cuando se reconcilian relaciones con un proveedor o se arreglan problemas de negociación
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{para retomar las compras al proveedor}
+		\UCitem{Entradas}{no aplica}
+		\UCitem{Origen}{no aplica}
+		\UCitem{Salidas}{Un mensaje emergente entre (Operación con exito  o Hubó un error en la operación)}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{El proveedor debe estar desactivado}
+		\UCitem{Postcondiciones}{no aplica}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso Se incluye el caso de uso \UCref{CU43}
+		\UCpaso [\Ucactor] Oprime el botón \IUref{IU10}{boton activar}
+		\UCpaso Muestra el Mensaje {\bf MSG3-}`` [{\em Confirmación activar\textsl{•}}].''.
+\UCpasoMuestra [\UCactor] Oprime el boton\IUbutton{si Activar!} \Trayref{A}
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+		
+	\end{UCtrayectoria}
+
+%--------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{cancelar operación}
+\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+%-----------------------------

@@ -1,5 +1,5 @@
  \begin{UseCase}{CU1}{Control de Acceso}{
-		Operación inicial para poder acceder al sistema. De éste Caso de uso se extiende a todos los demás casos de uso.
+		Operación inicial para poder acceder al sistema.Este caso de uso se incluye en todos los demás casos de uso.
 	}
 		\UCitem{Versión}{\color{Gray}0.1}
 		\UCitem{Autor}{\color{Gray}Aguilera Rosas Landa Enrique}
@@ -43,7 +43,7 @@
 		\begin{UCtrayectoriaA}{B}{El \UCactor no esta registrado}
 			\UCpaso Muestra el Mensaje {\bf MSG01-}``Error en la operación [{\em Usuario no Encontrado}] El usuario y/o contraseña no existen .''.
 			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}.
-			\UCpaso[] Continua en el paso 3 del \UCref{CU1}.
+			\UCpaso[\UCactor] Continua en el paso 3 del \UCref{CU1}.
 		\end{UCtrayectoriaA}		
 %--------------------------------------
 		\begin{UCtrayectoriaA}{C}{La cuenta a la que intenta acceder no esta activa}

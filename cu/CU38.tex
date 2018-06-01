@@ -1,0 +1,41 @@
+	\begin{UseCase}{CU38}{Registrar medicamentos del proveedor}{
+		El cajero registra datos de los proveedores.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Ingresar al Sistema para poder registra datos de referencia del proveedores}%no me acuerod como se llaman los clientes registrados
+		\UCitem{Entradas}{Datos de faturacion,numeros de contacto}%nose como  esten viendo este caso revisar
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Se pueden observar los datos ingresados dentro de \IUref{REgistro de proveedor}{REgistro de proveedor}}
+		\UCitem{Destino}{Registro en el sistema BD}
+		\UCitem{Precondiciones}{No tener los datos ya registrados,estar en las pantallas del cajero}
+		\UCitem{Postcondiciones}{El proveedor tendra un registro unico en el sistema}
+		\UCitem{Errores}{Error de conexion}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del cajero.
+		\UCpaso[\UCactor] Tiene que estar en la pestaña de nuevo Proveedor.
+		\UCpaso El sistema despliega un formulario de registro de nuevo proveedor\IUref{IU8}{ProveedorFormulario}. 
+		\UCpaso [\UCactor] Proporciona los datos requeridos en el formulario \IUref{IU8}{ProveedorFormulario}.
+		\UCpaso Verifica los datos ingresados por el cajero \Trayref{A}.
+		\UCpaso Presiona el boton Aceptar.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Los datos no son validos}
+			\UCpaso EL sistema verifica el formato de los datos correspondiendo a lo establecido ante la ley.
+			\UCpaso Continúa en el paso 4 del \UCref{CU38}.
+		\end{UCtrayectoriaA}
+%%----------------------------------------
+%		\begin{UCtrayectoriaA}{B}{El Correo electronico ya esta registrado}
+%			\UCpaso Muestra la pantalla {\bf MSG1-}``Error en la Operación''.
+%			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}.
+%			\UCpaso[] Continua en el paso 4 del \UCref{CU1}.
+%		\end{UCtrayectoriaA}		
+%%--------------------------------------
+		

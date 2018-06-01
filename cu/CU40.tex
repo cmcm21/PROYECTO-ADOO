@@ -1,0 +1,38 @@
+\begin{UseCase}{CU40}{Dar de baja medicamentos}{
+		El supervisor es el unico que puede dar de baja medicamentos.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Supervisor}
+		\UCitem{Propósito}{Ingresar al Sistema para poder dar de baja unn medicamento}%no me acuerod como se llaman los clientes registrados
+		\UCitem{Entradas}{Codigo de barrar del producto}%nose como  esten viendo este caso revisar
+		\UCitem{Origen}{Teclado, lector de codigo de barras}
+		\UCitem{Salidas}{ ERROR}
+		\UCitem{Destino}{ ERROR}
+		\UCitem{Precondiciones}{tener un medicamento dado de alta estar en las pantallas del supervisor}
+		\UCitem{Postcondiciones}{El medicamento no aparece en el sistema}
+		\UCitem{Errores}{Error de conexion}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del supervisor.
+		\UCpaso[\UCactor] Tiene que estar en la pestaña de dar de baja producto.
+		\UCpaso El sistema  pide el codigo de barras del producto. \Trayref{A}.
+		\UCpaso El sistema pide confirmacion de la accion con la pantalla \IUref{MSG2}{``Confirmación de Desactivado''}.
+		\UCpaso Presiona el boton Aceptar.\Trayref{B}.
+		\UCpaso EL sistema desabilita ese medicamento.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{EL supervisor da en el boton cancelar}
+			\UCpaso El sistema regresa al apartado del supervisor
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{EL supervisor da en el boton cancelar}
+			\UCpaso[] Continua en el paso 3 del \UCref{CU40}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		

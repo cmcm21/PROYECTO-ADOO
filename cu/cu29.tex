@@ -1,0 +1,45 @@
+\begin{UseCase}{CU29}{Cambiar datos de proveedor}{
+	Es necesario tener información correcta en el sistema sobre los proveedores que se tienen en la farmacia.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{para poder realizar reclamaciones al proveedor indicado}
+		\UCitem{Entradas}{nuevo datos de proveedores}
+		\UCitem{Origen}{teclado}
+		\UCitem{Salidas}{nuevo datos de proveedores}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{Que el proveedor este registrado en el sistema}
+		\UCitem{Postcondiciones}{Datos diferentes del proveedor}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso Se Incluye el caso de uso \UCref{CU43}
+		\UCpaso [\UCactor]Selecciona el atributo por el que quiere buscar al proveedor en la barra de búsqueda siendo los atributos disponibles para búsqueda (Nombre,RFC y Email).
+		\UCpaso [\UCactor] introduce el campo en la barra de búsqueda.
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Buscar} \Trayref{A}
+		\UCpaso Muestra un listado de proveedores filtrado con la entrada del [\UCactor].
+		\UCpaso[\UCactor] Selecciona al proveedor para cambiar de datos oprimiendo el botón \IUref{IU11}{boton editar} en la misma fila donde se encuentra el proveedor con datos a modificar.
+		\UCpaso Muestra el formulario \IUref{IU8}{Proveedor Formulario}.Con la información del proveedor seleccionado.
+		\UCpaso [\UCactor] Modifica los datos incorrectos o des-actualizados.
+		\UCpaso [\UCactor] Guarda los cambios oprimiendo el botón \IUbutton{Actualizar}.\Trayref{B}
+		\UCpaso regresa a la pantalla \IUref{IU15}{Tabla proveedores}
+	\end{UCtrayectoria}
+
+%--------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{no se encuentra ningún resultado}
+	\UCpaso Muestra la pantalla \IUref{IU15}{Tabla proveedores}
+	con ninguna fila agregada, (sin proveedores).
+	\UCpaso regresa al paso 3 del caso de uso \UCref{CU29}
+\end{UCtrayectoriaA}
+%-----------------------------
+\begin{UCtrayectoriaA}{B}{Error de validación}
+	\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU15}{Tabla proveedores}
+\end{UCtrayectoriaA}

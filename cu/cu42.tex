@@ -1,0 +1,34 @@
+\begin{UseCase}{CU42}{Listar los Atributos de los paquetes de descuento}{
+Conocer los medicamentos que hay en cada paquete así como los paquetes que se tiene en vigencia para aplicación es necesario para poder administrar los medicamentos.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Dueño}}
+		\UCitem{Propósito}{para administrar futuros descuentos,Conocer los paquetes existentes y que están activos(dentro de una fecha vigente)}
+		\UCitem{Entradas}{no aplica}
+		\UCitem{Origen}{no aplica}
+		\UCitem{Salidas}{\IUref{IU16}{Tabla paquetes de descuento}}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{Que el actor tenga permisos de dueño}
+		\UCitem{Postcondiciones}{no aplica}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso [\UCactor] Oprime el botón \IUbutton{Almacen} en el escritorio de la pantalla principal \IUref{IU1}{pantalla principal} \Trayref{A}
+		\UCpaso Muestra el despliegue de opciones dentro de almacén(Sucursales y Medicamentos.)
+		\UCpaso [\Ucactor] Oprime el botón \IUbutton{Sucursales}.
+		\UCpaso Muestra la pantalla \IUref{IU16}{Tabla paquete descuento}
+	\end{UCtrayectoria}
+
+%--------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{Permiso denegado}
+\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Permiso denegado\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+%-----------------------------

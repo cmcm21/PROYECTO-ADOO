@@ -1,0 +1,40 @@
+\begin{UseCase}{CU37}{Aplicar un descuento}{
+		El sistema detecta descuentos aplicabres a los medicamentos.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{El sistema permite un descuento valido}%
+		\UCitem{Entradas}{Una venta valida}%
+		\UCitem{Origen}{Sistema}
+		\UCitem{Salidas}{ }
+		\UCitem{Destino}{ }
+		\UCitem{Precondiciones}{Tener la venta valida, estar en las pantallas del cajero}
+		\UCitem{Postcondiciones}{Se genera nuevos datos del precios para la venta}
+		\UCitem{Errores}{Error de conexion, los descuentos no son validos para esos productos}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del cajero.
+		\UCpaso[\UCactor] Tiene que estar generando la venta(venta sin concluir).
+		\UCpaso El sistema despliega los descuentos validos para los medicamentos de la venta \IUref{IU4}{FormularioPaqueteDescuento}. 
+		\UCpaso Proporciona los descuentos para la venta.
+		\UCpaso Continuar con la venta en el caso de uso \UCref{CU39}.
+	\end{UCtrayectoria}
+%\Trayref{A}
+%%--------------------------------------		
+%	\begin{UCtrayectoriaA}{A}{El Correo no esta Correcto}
+%			\UCpaso Muestra el Mensaje {\bf MSG03-}`` [{\em correo con formato incorrecto}] Introduzca un correo con el formato xxx@xx.xx .''.
+%			\UCpaso Continúa en el paso 3 del \UCref{CU1}.
+%		\end{UCtrayectoriaA}
+%%----------------------------------------
+%		\begin{UCtrayectoriaA}{B}{El Correo electronico ya esta registrado}
+%			\UCpaso Muestra la pantalla {\bf MSG1-}``Error en la Operación''.
+%			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}.
+%			\UCpaso[] Continua en el paso 4 del \UCref{CU1}.
+%		\end{UCtrayectoriaA}		
+%%--------------------------------------
+		

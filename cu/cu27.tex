@@ -1,0 +1,41 @@
+\begin{UseCase}{CU27}{Abrir turno de caja}{
+	Operación necesaria para comenzar a registrar ventas y 
+	utilizar el sistema con permisos de cajero.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}}
+		\UCitem{Actor}{\hyperlink{Alumno}{Supervisor}}
+		\UCitem{Propósito}{Poder controlar los turno de los cajeros y evitar anomalías en ingresos}
+		\UCitem{Entradas}{fecha  y turno (Matutino,Vespertino,Nocturno),Nombre Completo de Cajero que inicia Turno de caja.}
+		\UCitem{Origen}{teclado}
+		\UCitem{Salidas}{\IUref{IU1}{pantalla principal}}
+		\UCitem{Destino}{pantalla}
+		\UCitem{Precondiciones}{Que el cajero ya este en la sucursal para laborar,
+		Que el cajero en turno este registrado y activado al igual que el supervisor que realiza la operación de abrir caja,Que el turno de caja este cerrado}
+		\UCitem{Postcondiciones}{El cajero podrá utilizar el sistema}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores}
+		\UCitem{Tipo}{Caso de uso primario}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Se Incluye el caso de uso \UCref{CU1}
+		\UCpaso presiona el botón \IUbutton{abrir Caja}
+		\UCpaso Verifica que el usuario tenga permisos de supervisor \Trayref{A} 
+		\UCpaso Busca y muestra las Sucursales asociadas a la cuenta de supervisor actual.
+		\UCpaso [\UCactor] Selecciona la sucursal en la que quiere abrir turno.
+		\UCpaso Activa la sucursal para el inicio de su operación, lo cual implica dejar que el cajero de el turno correspondiente acceda al sistema. \Trayref{B}
+	\end{UCtrayectoria}
+
+%--------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{El actor no tiene permisos de supervisor}
+	\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Permiso denegado\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}
+%-----------------------------
+\begin{UCtrayectoriaA}{B}{El cajero asignado al turno correspondiente esta desactivado}
+	\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error de operación\textsl{•}}].''.
+			\UCpaso Muestra la \IUref{IU1}{Pantalla Principal}
+\end{UCtrayectoriaA}

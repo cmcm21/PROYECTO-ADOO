@@ -1,0 +1,44 @@
+\begin{UseCase}{CU36}{Registrar datos de un cliente}{
+		El cajero registra datos de los clientes en el sistema.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Ingresar al Sistema para poder registra un nuevo cliente preferente}%no me acuerod como se llaman los clientes registrados
+		\UCitem{Entradas}{Correo Electrónico del cliente numero telefonico}%nose como  esten viendo este caso revisar
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Se pueden observar los datos ingresados dentro de \IUref{IUregistro de cliente}{Pantalla del Cajero}}
+		\UCitem{Destino}{Registro en el sistema BD}
+		\UCitem{Precondiciones}{No se debe repetir el correo electronico, estar en las pantallas del cajero}
+		\UCitem{Postcondiciones}{El cliente tendra un registro unico en el sistema}
+		\UCitem{Errores}{Error de conexion, el correo electronico ya este registrado}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que cumplir el caso de uso \IUref{IU1}{Login} en el apartado del cajero.
+		\UCpaso[\UCactor] Tiene que estar en la pestaña de nuevo cliente.
+		\UCpaso El sistema despliega un formulario de registro de nuevos clientes\IUref{IU6}{Formulario Clientes}. 
+		\UCpaso [\UCactor] proporciona los datos requeridos en el formulario.
+		\UCpaso Verifica que el correo proporcionado cumpla con el formato ejemplo@ejemplo.com \Trayref{A}.
+		\UCpaso Presiona el boton Aceptar.
+		\UCpaso Verifica que el correo proporcionado no este ya registrado. \Trayref{B}.
+		\UCpaso El sistema despriega la pantalla  {\bf MSG0-``Operación Exitosa''}.
+		\UCpaso Despliega la pantalla principal del actor.	
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{El Correo no esta Correcto}
+			\UCpaso Muestra el Mensaje {\bf MSG03-``\em Correo con formato incorrecto Introduzca un correo con el formato ejemplo@ejemplo.com .''.}
+			\UCpaso Continúa en el paso 3 del \UCref{CU36}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{El Correo electronico ya esta registrado}
+			\UCpaso Muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}.
+			\UCpaso[] Continua en el paso 4 del \UCref{CU36}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		
