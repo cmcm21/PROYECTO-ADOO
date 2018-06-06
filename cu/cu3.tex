@@ -1,0 +1,56 @@
+\begin{UseCase}{CU3}{Registrar cajero}{
+		El dueño es el unico que puede registrar un cajero en el sistema para las sucursales que lo requieran.
+	}
+		\UCitem{Versión}{\color{Gray}0.1.2}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray} }
+		\UCitem{Actor}{Dueño}
+		\UCitem{Propósito}{Registrar cajeros en la sucursales donde faltan cajeros}
+		\UCitem{Entradas}{Nombre, Apellidos del solicitante, telefono, salario, sucursal}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Registro de un cajero en una unica sucursal}
+		\UCitem{Destino}{BD}
+		\UCitem{Precondiciones}{No tener dado de alta al cajero en el sistema en general}
+		\UCitem{Postcondiciones}{Registro en el sistema de un cajero en una sucursal}
+		\UCitem{Errores}{Exista algun duplicado en los datos del empleado, sus cambios no sean guardados}
+		\UCitem{Observaciones}{El cajero siempre tiene asignado sucursal}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso [\UCactor] Tiene que estar en las pantallas de dueño.
+		\UCpaso [\UCactor] El abre el formulario agregar cajero.
+		\UCpaso El sistema despliega la pantalla \IUref{IU7}{FormulariCajero}.
+		\UCpaso [\UCactor] Introduce los datos del formulario incluyendo la sucursal \Trayref{A},\Trayref{B},\Trayref{D}.%sucursal mal
+		\UCpaso El sistema verifica los cajeros de la sucursal del paso anterior(verifica el numero de cajeros en la sucursal) \Trayref{C},\Trayref{D}.%muchos cajeros en sucursal
+		\UCpaso [\UCactor]Preciona el boton aceptar \Trayref{D}.
+		\UCpaso El sistema regresa a las pantallas del dueño.
+	\end{UCtrayectoria}
+
+\textbf{NOTA:El numero de cajeros y supervisores es de 3 por sucursal.}
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{A}{Sucursal no encontrada}
+			\UCpaso El sistema muestra junto al campo sucursal que no es valida.
+			\UCpaso Continúa en el paso 4 del \UCref{CU3}.
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{B}{Algun campo del Cajero tiene un error de formato.}
+			\UCpaso El sistema muestra junto al campo del error, que es error de formato.
+			\UCpaso Continúa en el paso 4 del \UCref{CU3}.
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+
+\begin{UCtrayectoriaA}{C}{La sucursal valida seleccionada ya tiene los empleados necesarios para el horario de atención}
+			\UCpaso El sistema muestra junto al campo sucursal que la sucursal ya tiene los empledos necesarios para el horario de atención.
+			\UCpaso Continúa en el paso 4 del \UCref{CU3}.
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------
+
+
+\begin{UCtrayectoriaA}{D}{Da en el boton cancelar}
+		\UCpaso El sistema regresa a las pantallas del dueño.
+\end{UCtrayectoriaA}

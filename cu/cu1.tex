@@ -1,0 +1,45 @@
+ \begin{UseCase}{CU1}{Registro de medicamento}{
+		El Dueño es el unico actor que puede hacer un registro de un medicamento en el sistema.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Dueño}
+		\UCitem{Propósito}{El dueño registra un nuevo medicamento en el sistema para poeder hacer las ventas porteriores}
+		\UCitem{Entradas}{Datos del medicamento, datos del proveedor del medicamento}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Registro en la base de datos del nuevo medicamento}
+		\UCitem{Destino}{BD}
+		\UCitem{Precondiciones}{No tener ya registrado el medicamento,tener registro del proveedor, estar en las pantallas del dueño. }
+		\UCitem{Postcondiciones}{Registro del medicamento en el sistema}
+		\UCitem{Errores}{Medicamento parecido  ya registrado, proveedor no encontrado}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso[\UCactor] Tiene que estar en las pantallas de dueño.
+		\UCpaso [\UCactor]El abre el formulario de registro de medicamentos. 
+		\UCpaso El sistema despliega la pantalla \IUref{IU5}{FormularioMedicamento} \Trayref{D}.%CANCELAR OPERACION
+		\UCpaso [\UCactor] Tiene que llenar los datos solicitados del medicamento y proveedor.%\Trayref{A}
+		\UCpaso El sistema verifica el formulario este llenado(no este vacio) \Trayref{A},\Trayref{D}
+		\UCpaso El sistema comprueba el proveedor este registrado \Trayref{B},\Trayref{D}
+		\UCpaso El sistema registra el medicamento en el sistema con el proveedor indicado, mostrando la pantalla \IUref{MSG6}{ConfirmarOperación}.
+		\UCpaso	[\UCactor]Preciona el boton aceptar.\Trayref{C},\Trayref{D}
+		\UCpaso El sistema regresa a las pantallas del dueño.	
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Hay datos en el formulario que estan vacios}
+			\UCpaso El sistema muestra junto al campo vacio que el dato es necesario.
+			\UCpaso Continúa en el paso 4 del \UCref{CU1}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{No se encuentra el proveedor}
+			\UCpaso El sistema muestra junto al campo del proveedor del medicamento que ese proveedor no se encuenta registrado.
+			\UCpaso[] Continua en el paso 4 del \UCref{CU1}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		\begin{UCtrayectoriaA}{C}{Preciona el boton cancelar}
+			\UCpaso Continua en el paso 4 del \UCref{CU1}.
+		\end{UCtrayectoriaA}

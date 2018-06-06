@@ -1,0 +1,73 @@
+ \begin{UseCase}{CU5}{Registrar Venta Cliente}{
+	Se necesita una manera fácil para poder registrar ventas a los clientes de cada sucursal, con fines de posibles aclaraciones o dudas que puedan surgir debio a los productos que ofrecemos.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Vázquez Cruz Fernando Darwin }
+		\UCitem{Supervisa}{\color{Gray} Enrique Aguilera}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Tener un control de las salidas de medicamento por ventas a clientes, para fines de cualquier aclaración o duda por parte del cliente.}
+		\UCitem{Entradas}{Todos los datos requeridos en el formulario \IUref{IU19}{Formulario Venta}}
+		\UCitem{Origen}{Teclado, mouse, lector de código de barras}
+		\UCitem{Salidas}{comprobante de venta, salidas de medicamento(s)}
+		\UCitem{Destino}{Pantalla,impresora}
+		\UCitem{Precondiciones}{Los medicamentos a vender deben estar registrados en el sistema, el supervisor debió abrir la caja con anterioridad \UCref{CU9}{Abrir Caja}.}
+		\UCitem{Postcondiciones}{Disminuye la cantidad de los medicamentos que se vendieron, se tiene una venta más registrada en el sistema a nombre de un cliente.}
+		\UCitem{Errores}{Que no se realice una conexión a la base de datos,que el servidor se caiga,que los datos proporcionados estén erróneos, que el o los medicamentos estén registrados en el sistema pero no estén disponibles en la sucursal.}
+		\UCitem{viene de...}{\UCref{CU0}{Control de acceso}}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Ventas} que esta en la pantalla principal \IUref{IU1}{Pantalla principal}
+		\UCpaso Verifica que los permisos de usuario sean permisos de cajero. \Trayref{A}
+		\UCpaso Despliega el Formulario \IUref{IU19}{Formulario Ventas}.
+		\UCpaso Busca el id del cajero que esta actualmente con la sesión activa y llena el campo "Empleado" con esa id.
+		\UCpaso [\UCactor] En el primer campo de formulario "Cliente" Selecciona la opción "Cliente Preferente".
+		\UCpaso Identifica la opción seleccionada por el [\UCactor] y despliega una checklist con los nombres de los clientes registrados en el sistema.
+		\UCpaso [\UCactor] Da clic en donde esta el nombre del cliente al que se le registrará la venta.\Trayref{B}
+		\UCpaso Llena el campo Cliente con el nombre seleccionado en el paso anterior. 
+		\UCpaso [\UCactor] Escanea el código de barras del medicamento con el lector de código de barras.
+		\UCpaso Llena el campo de `"Medicamentos" con el código de barras que se introdujo del lector.\Trayref{C}.
+		\UCpaso Recibe un "Enter" del lector de código de barras y añade otra fila para agregar un nuevo medicamento en el campo "Medicamentos".
+		\UCpaso Agrega en una lista que crea temporalmente, el nombre del  medicamento y el precio de venta del medicamento que fue leído por el lector de código de barras.
+		\UCpaso Muestra la lista temporal de los medicamentos en el campo "Desglose de medicamentos y precios".\Trayref{D}
+		\UCpaso Calcula el Total de los precios de venta de los medicamentos en la lista temporal y muestra la cantidad en el campo "Valor Total".
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Guardar}.
+		\UCpaso Muestra el Mensaje {\bf MSG6-}"Confirmar[{\em Confirmar Operación }]¿Los datos del formulario son correctos?.".
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}
+		\UCpaso Verifica que ningún campo del formulario esté vació. \Trayref{E}
+		\UCpaso Guarda los datos de la venta y actualiza la base de datos.
+		\UCpaso Muestra el Mensaje {\bf MSG0-}"Exito[{\em Operación Realizada con exito }].".
+		\UCpaso Muestra la pantalla \IUref{IU1}{Pantalla Principal}.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Permiso Denegado}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`"Cancelado[{\em Permiso Denegado }].".
+			\UCpaso Muestra la pantalla \IUref{IU1}{Pantalla Principal}.
+		\end{UCtrayectoriaA}
+
+%--------------------------------------
+		\begin{UCtrayectoriaA}{B}{El cajero no encuetra el nombre del cliente}
+			\UCpaso [\UCactor] Busca el nombre del cliente en el checklist pero no lo encuentra. 
+			\UCpaso [\UCactor] Verifica la información proporcionada por le cliente.
+			\UCpaso [\UCactor] Continua en el paso 5 de este caso de uso.			
+		\end{UCtrayectoriaA}
+		%--------------------------------------
+		\begin{UCtrayectoriaA}{C}{El lector de barras no pudo leer bien el código}
+			\UCpaso sigue su ejecución sin llenar el campo "Medicamentos""
+			\UCpaso Continua en el paso 9 de este caso de uso.	
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{D}{Lista de medicamentos muy larga }
+			\UCpaso Muestra en el formulario \IUref{IU19}{Formulario Ventas} un "scroll" en el campo de `"Desglose de medicamentos y precios"
+			\UCpaso Regresa al paso 13 de este caso de uso.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+			\begin{UCtrayectoriaA}{E}{Existe por lo menos un campo obligatorio que esta vacío}
+			\UCpaso Remarca con Rojo los campos obligatorios que están vacíos y pone la leyenda "Campo Obligatorio".
+			\UCpaso Muestra el Mensaje {\bf MSG1-}"Error en la operación [{\em Campos obligatorios vacíos}] Los campos llenados con Rojo no pueden estar vacíos.".
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+			\UCpaso Regresa a la pantalla \IUref{IU19}{Formulario Ventas} Mostrando los campos en rojo y dejando la información introducida por el [\UCactor] en los pasos anteriores de este casos de uso
+		\end{UCtrayectoriaA}

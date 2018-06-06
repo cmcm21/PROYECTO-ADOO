@@ -4,246 +4,148 @@
 	En este capítulo se modela el alcance del sistema. Se presentan inicialmente los Actores involucrados y sus requerimientos, especificando cuales se alcanzaron en la primera iteración y cuales serán trabajados en la segunda iteración. Después se presentan los requerimientos funcionales de esta iteración y al final se presenta el modelo Físico y Lógico del sistema.
 
 %---------------------------------------------------------
-\section{Objetivo General}
-
-	El proposito de esta seccion es realizar un analisis de todos los requerimientos que el contratista llegue a especificar para el desarrollo del sistema y facilitar la interaccion entrel usuario y el  programador.
-
-Ademas de llevar  el  control  completo  de  la  farmacia,  mediante  un  único  sistema  conectado  y utilizado por todos los empleados.
-
+\section{Objetivo General Del Proyecto}
+Llevar  el  control  completo  de  la  farmacia,  mediante  un   único  sistema  conectado  y utilizado por todos los empleados en las diferentes Sucursales de la franquicia.
 \subsection{Objetivos Específicos}
-	Realizar una revisión sobre la información o requerimientos necesarios para el funcionamiento correcto del sistema.\\
+Realizar una revisión sobre la información o requerimientos necesarios para el funcionamiento correcto del sistema.\\
 Encontrar y resolver las diferencias que puede llegar a interpretar el cliente con las del programador, para eso se definirán los requerimientos en un lenguaje apto para ambas partes.
-
 También es importante revisar que el abrir una sucursal nueva sea solo dificultad física y no técnica.Una vez terminado, ser fácil de usar por los empleados.Mayor claridad de las ventas.
 
+\section{Requerimientos del Usuario}
+RU1 Registrar Medicamentos\\
+Descripción: El usuario Necesita registrar los nuevos medicamentos que se venderán en la farmacia\\
+\\
+RU2 Registrar entregas de proveedores\\
+Descripción: El usuario necesita registrar los medicamentos que llegarón de un proveedor, de la misma forma necesita información del proveedor que hace la entrega ,necesita también la hora y la fecha que se hizó la entrega, y necesita un comprobante de parte del proveedor.\\
+\\
+RU3 Consultar Medicamento por cada Sucursal\\
+Descripción:El usuario necesita conocer el medicamento que se maneja así como la cantidad de cada uno de estos medicamentos.\\
+\\
+RU3 Registrar Clientes\\
+Descripción: El usuario requiere Identificar a los clientes que visitan su farmacia con frecuencia para poder darles descuentos y promociones\\
+\\
+RU4 Registrar Empleados\\
+Descripción:El usuario requiere Tener guardada la información de los trabajadores que laboran en la franquicia de la farmacia, de la misma manera necesita asignarles sucursal y en caso de que sea un supervisor asignarle varias sucursales (mínimo 1 máximo 3) \\
+\\
+RU5 Control de la caja.
+Descripción: El usuario necesita que alguien vigile el dinero con el que se empieza el día y al principio de cada turno (matutino,vespertino, nocturno) así como al final de estos mismos turnos.\\
+\\
+RU6 Realizar una Venta\\
+Descripción: El usuario requiere guardar información de que medicamento se vende en cada sucursal así como el dinero que entra cada que se realiza una venta en estas, también en caso de que se haga una venta de varios medicamentos el desglose de cada medicamento que se vendió con su precio de Venta.\\
+\\
+RU7 Consultar Medicamento Local
+Descripción: El Usuario necesita saber que medicamentos tiene en la sucursal en la que se encuentra laborando para poder dar un mejor servicio al cliente.\\
+\\
+RU8 Registrar Sucursal
+Descripción: El usuario requiere que se guarde información de cada sucursal como su paradero,el nombre y teléfono para poder tener un mejor control de estas, sabiendo donde se encuentran para poder asignar Empelados y medios de contacto para tener comunicación continua con la sucursal y un nombre para identificarlas.\\
+\\
+RU9 Consultar Ventas por día\\
+Descripción: El usuario Necesita poder conocer las ventas que se realizador durante la hora de atención de la farmacia(9:00am A 12:00pm) para tener control de las ventas y el progreso de la empresa, así como la administración de los medicamentos.\\
+RU10 Registrar Proveedor
+Descripción: El usuario Necesita Registrar a los proveedores que le surten de medicamentos, para poder hacer alguna reclamación o Encargar medicamentos con confianza.
+\\
+RU11 Consultar Proveedores
+Descripción: El Usuario necesita Conocer a los proveedores para hacer algún pedido,
+o en su defecto Aclarar algún malentendido.
+
 \section{Requerimientos funcionales}
-RF1\\
-Nombre: Mostrar el Inventario de acuerdo a Consultas\\
-Descripcion: El sistema controlara las consultas,que el usuario genere a la base de datos, el
-cual se le presentara como el inventario de la farmacia. Estas consultas mostraran de forma
-grafica los datos de cada medicamento.\\
-Prioridad: Alta\\
-\newpage
-RF2\\
-Nombre: Busqueda sistema\\
-Descripcion: El sistema realizara una busqueda mediante el codigo de barras del medicamento,
-por su nombre o ingrediente activo que contenga. Este a su vez mostrara la informacion
-del medicamento o en caso de ingredientes activos, mostrara todos lo medicamentos que contengan
-dicho ingrediente activo.\\
-Prioridad:Alta\\
+RF1 Registrar Medicamento\\
+Descripcion: El sistema Guarda la información de forma estructurada de los campos de importancia de un medicamento, como su nombre, ingredientes Activos, Precios de compra y venta, caducidad, y todos los campos mencionados en la entidad ``Medicamento" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Prioridad: MA\\
+RU:RU1.\\
 \\
-RF3\\
-Nombre: Atributos del Medicamento\\
-Descripcion:Cada medicamento tendra: nombre,ingrediente(s) activo(s),dosis,fecha de caducidad,codigo
-de barras, vıa de administracion, presentacion,laboratorio,lote,cantidad,advertencias,pediatrico,cuantos
-hay en existencia,precio de compra y precio de venta.\\
-Prioridad:Alta\\
+RF2 Registrar Entregas 
+Descripcion: El sistema guarda la información de las entregas realizadas por el proveedor tales como fecha, hora, proveedor, y todos los campos mencionados en la entidad ``Ingreso" y también en la entidad ``Lote" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Prioridad:A\\
+RU:RU2.\\
 \\
-RF4\\
-Nombre: Cierre de turno\\
-Descripcion: El sistema debera generar un archivo donde se reporte las modificaciones realizadas
-por el operador del turno activo\\
-Prioridad:Alta\\
+RF3 Registrar Clientes\\
+Descripcion:El Sistema Guarda información de un cliente, los campos que Guarda del Cliente están Especificados en la entidad ``Cliente" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Prioridad:M\\
+RU:RU3\\
 \\
-RF5\\
-Nombre: Listado de vıa de administracion\\
-Descripcion:El sistema debera contar y hacer un listado de las opciones para la vıa de administracion,
-este listado puede ser actualizado por el usuario, no le permitira eliminar los
-existentes pero sı agregar mas.\\
-Prioridad:Alta\\
+RF4 Registrar Empleados\\
+Descripcion: El sistema guarda la información de un empleado, este Empleado puede ser un Cajero o un Supervisor, la información que guarda de cada uno de estos empleados esta Especificada en las Entidades ``Cajero" y ``Supervisor" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Prioridad:A\\
+RU:RU4\\
 \\
-RF6\\
-Nombre: Listado de proveedores\\
-Descripcion: El sistema debera contar y hacer un listado de los actuales proveedores que
-surten a la farmacia\\
-Prioridad:Alta\\
+RF5 Abrir Caja\\
+Descripcion:El sistema Permite Que el usuario pueda Abrir la Caja y Muestra el dinero con el que se Cerro la caja en el turno anterior para mostrarlo al usuario.
+\\
+Prioridad:A\\
+RU:RU5
+\\
+RF6 Cerrar caja\\
+Descripcion: El sistema Permite Que el usuario Pueda cerrar la Caja, y Calcula El dinero de las ventas realizadas a lo largo del turno, lo muestra en pantalla para el usuario y lo guarda como una variable temporal(hasta Que se abre turno)\\
+Prioridad:A\\
+RU:RU5
 \\
 RF7\\
-Nombre: Listado de Presentacion\\
-Descripcion:El sistema debera contar y hacer un listado de los tipos de Presentacion que hay.
-El usuario podra agregar mas formas de presentacion pero no podra modificar las existentes\\
-Prioridad:Alta\\
+Nombre: Realizar Una Venta\\
+Descripcion:El sistema cuando se realiza una venta Guarda todos los datos especificados en la entidad ``Venta" y la entidad ``detalle Venta" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior, Aparte en el mismo proceso reduce las existencias del medicamento que se vendió e imprime un comprobante con la información de ``Venta" desde una impresora\\
+Prioridad:MA\\
+RU:RU6\\
 \\
-RF10\\
-Nombre: No Venta de Medicamentos Inexistentes\\
-Descripcion: El sistema no permitira la venta de medicamentos sin existencia\\
-Prioridad:Alta\\
+RF8 Consultar Medicamento Local\\
+Descripcion: El sistema Mostrara una tabla con los medicamentos que se tienen en la sucursal y datos esenciales como su nombre, precio, Existencias y proporciona al usuario un botón para que pueda visualizar toda la información del medicamento.\\
+Prioridad:M\\
+RU:RU7
 \\
-RF11\\
-Nombre: Duplicado de Medicamentos\\
-Descripcion: No pueden haber medicamentos con un mismo codigo de barras.\\
-Prioridad:Alta\\
+RF9 Registrar Sucursal\\
+Descripcion: El sistema Guarda la información de una sucursal la cual se especifica en la entidad ``Sucursal" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior. \
+Prioridad:A\\\
+RU:RU8
 \\
-RF12\\
-Nombre: Listado de Empleados\\
-Descripcion: El sistema debera contar con in listado desplegable de los empleados actualmente registrados en el servidor\\
-Prioridad: Alta\\
+RF 9 Consultar Ventas Por día\\
+Descripcion: El sistema un reporte en formato .pdf donde se desglosan las ventas del día, Los datos que se desglosan en el reporte son el nombre del medicamento y el precio del mismo.\\
+Prioridad: MA\\
+RU:RU9
 \\
-RF13\\
-Nombre: Privilegios de Administrador\\
-Descripcion: Las pantallas a las que tendra acceso el administrador seran diferentes a las de los demas empleados. El administrador o Dueño podra dar de altar a: Empleados asi como Proveedores Y tendra por supuesto acceso a las demas pantallas de agrear, modificar y eliminar medicamentos\\
-Prioridad: Alta\\
+RF13 Registrar Proveedor
+Descripcion: El sistema guardara la Información de el proveedor La Cual se especifica en la entidad ``Proveedor" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Prioridad: A\\
+RU:RU10
 \\
-RF14\\
-Nombre: Privilegios de Empleado\\
-Descripcion: Los empleados solo tendran acceso a las operaciones basicas del sistema: agregar, modificar y eliminar medicamentos, asi como ver el listado de estos\\
-Prioridad: Alta\\
-\\
-RF15\\
-Nombre: Restriccion de Empleado;
-Descripcion: Una vez que el empleado ha sido dado de baja se le retiraran todos los privilegios y accesos al sistema\\
-Prioridad:Alta\\
-\\
-RF16\\
-Nombre: Sistema de Facturacion\\
-Descripcion: El sistema podra factura los medicamentos comprados por los clientes\\
-Prioridad: Alta\\
-\\ 
-RF17\\
-Nombre: Regitro de Clientes Frecuentes\\
-Descripcion: El sistema debera de mostrar una lista con los clientes mas frecuentes que realicen compras\\
-Prioridad:Normal\\
-\\
-RF18\\
-Nombre: Medicamentos Cercanos A Caducar\\
-Descripcion: El sistema debera avisar cuando algun medicamento este cercano a caducar, para asi tomar las medidas correspondientes\\
-Prioridad: Alta\\
-\\
-RF19\\
-Nombre: Medicamento ha Caducado\\
-Descripcion: El sistema mandara una alrta cuando un medicamento haya caducado para proceder a elimnarlo tanto del sistema asi como de manera fisica\\
-Prioridad: Alta\\
+RF14 Consultar Proveedor\\
+Descripcion: El sistema muestra una tabla que en lista a los proveedores que estan registrados en el sistema junto con sus datos especificados En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.
+Prioridad: M\\
+RU:RU11
 \newpage
-RF20\\
-Nombre: Medicamentos mas Demandados\\
-Descripcion: El sistema debera mostrar los medicamentos mas vendidos al final de mes, de esta forma el usuario podra saber que medicamentos debera solicitar mas a sus proveedores\\
-Prioridad: Alta\\
-\\
-RF21\\
-Nombre: Disponibilidad de medicamentos en otras sucursales\\
-Descripcion: Cuando el cliente desee cierto medicamento y este no se encuentre disponible, se podra saber si ese medicamento se encuentra disponible en alguna otra sucursal o incluso saber si esta o no en existencias\\
-Prioridad: Alta\\
-\\
-RF22\\
-Nombre: Quejas y Sugerencias\\
-Descripcion: El sistema podra guardar quejas y sugerencias para que el usuario pueda revisarlas y atender las necesidades del cliente\\
-Prioridad: Normal\\
-\\
-RF23\\
-Nombre: Listado de sueldos por empleado\\
-Descripcion: El sistema podra mostrar los sueldos de cada empleado y sus actividades basicas a realizar\\
-Prioridad: Alta\\
-\\
-RF24\\
-Nombre: Acceso al dominio web del sistema\\
-Descripcion: Para poder acceder a la pagina web del sistema el usuario necesitara tener el link, ya que no sera facil encontrarlo en los buscadores web\\
-Prioridad: Alta\\
-\\
-RF25\\
-Nombre: Notificacion de Inventario\\
-Descripcion: El sistema dara notificacion cuando no haya existencias de un medicamento\\
-Prioridad: Alta\\
-\\
-\newpage
-\section{Requerimientos del Usuario}
-RU1\\
-Nombre: Registro de Medicamentos \\
-Descripcion: El usuario introducira los datos del medicamento a dar de alta en un nuevo
-registro.\\
-Prioridad: Alta \\
-\\
-RU2\\
-Nombre:  \\
-Descripcion: \\
-Prioridad: Alta \\
-\\
-RU2\\
-Nombre: Busquedas de Inventario \\
-Descripcion: El usuario podra realizar una busqueda de los medicamentos, por su codigo de
-barras, por su nombre, o por su ingrediente activo.\\
-Prioridad: Alta \\
-\\
-RU3\\
-Nombre: Registro de clientes \\
-Descripcion: El usuario requiere llevar un registro actualizado de todos los clientes para su seguimiento, atencion y tareas de promocion y mercadotecnia\\
-Prioridad: Alta \\
-\\
-RU4\\
-Nombre:  Actualizar un Medicamento\\
-Descripcion: El usuario en el listado principal podra acceder a una opcion que desplegara el
-contenido del medicamento para poder modificarlo con los nuevos datos\\
-Prioridad: Alta \\
-\\
-RU5\\
-Nombre:  Eliminar un  Medicamento\\
-Descripcion: El usuario en el listado de medicamentos podra eliminar por completo un medicamento
-de este listado.\\
-Prioridad: Alta \\
-\\
-RU6\\
-Nombre:  Realizar Una Venta\\
-Descripcion: El usuario podra realizar una venta al mostrador introduciendo los datos del medicamento a vender junto con su cantidad.\\
-Prioridad: Alta \\
-\\
-RU7\\
-Nombre:  Ingresar al Sistema\\
-Descripcion: El usuario Ingresara al sistema con su nombre de ususario y su contraseña\\
-Prioridad: Alta \\
-\newpage
-RU8\\
-Nombre:  Cerrar la Caja\\
-Descripcion: El usuario una vez que se acabe la jornada laboral, podra cerrar la caja para terminar con las operaciones diarias de la farmacia.\\
-Prioridad: Alta \\
-\\
-RU9\\
-Nombre: Listar los Empleados \\
-Descripcion: El usuario podra checar todos los empleados disponibles en la sucursal que desea mediante un listado.\\
-Prioridad: Alta \\
-\\
-RU10\\
-Nombre:  Listar los Proveedores\\
-Descripcion: El usuario podra checar todos los proveedores que la sucursal mediante un listado.\\
-Prioridad: Alta \\
-\\
-RU11\\
-Nombre:  Sistema via Web\\
-Descripcion: El usuario necesita que la plataforma del sistema sea via web.\\
-Prioridad: Alta \\
-\\
-RU12\\
-Nombre:  Tabla de Inventario\\
-Descripcion: El usuario podra checar todo el inventario disponible mediante unas tablas.\\
-Prioridad: Alta \\
-\\
-RU13\\
-Nombre:  Sistema de Facturacion\\
-Descripcion: El usuario podra generar un ticket por cada venta que realize.\\
-Prioridad: Alta \\
-\\
-RU14\\
-Nombre:  Registrar Clientes Frecuentes\\
-Descripcion: El usuario podra separar a los clientes normales  de los clientes frecuentes, los cuales obtendran beneficios.\\
-Prioridad: Alta \\
-\\
-\newpage
+
 %---------------------------------------------------------
 \section{Especificación de plataforma}	
 
-
-\cdtInstrucciones{
-	
 \begin{description}
+
 	\item[Tipo de sistema:] Web.
-	\item[Software requerido:]Servidor apache 2.02,Sistema Operatio GNU.Linux con kernel Linux 4.14.34.1.MANJARO,modphp7.
-	\item[Hardware requerido:] Vendor.id:GenuineIntel,model name:Intel Celeron CPU B830  1.80GHz ,cpuMHz:1122.835, MemTotal:3927584 kB, SwapTotal:8658208 kB.
-	\item[servicios:] De conexión a internet.
+	\item[Software requerido:]Apache, Maria-DB,google-chrome,firefox,edge.
+	\item[OS:] Arch Linux x86\_64.
+	\item[Kernel Release:] 4.14.47-1-MANJARO.
+	\item[RAM:] 2006 MB / 3835 MB
+	\item[Processor Type:] Intel(R) Celeron(R) CPU B830 @ 1.80GHz.
+	\item[servicios:] servicios del servidor de base de datos 10.1.33-MariaDB MariaDB Server.\\También se Ocupan servicios del serve API Apache 2.0 Handler
+Con la Version de Apache:	Apache/2.4.33 (Unix) PHP/7.2.6.
+	\item[Mysql Support:] mysqlnd 5.0.12-dev - 20150407.
+	\item[Hosting:]Se Compra un servidor dedicado con el proveedor ``Go Daddy".
+	Se compra un servidor dedicado, para que se pueda dar soporte a  todos los empleados en todas las sucursales,tal vez al principio se tendrá espacio y servidor de sobra, pero de esta forma aumenta la productividad y se quitan los riesgos de trafico en el servidor.
+	\item[servidor Hosting:]4 núcleos de CPU @ 3.1 GHz
+Memoria de 4 GB
+1 TB de almacenamiento (RAID-1)\^
+Ancho de banda sin medición(El proveedor no limita el ancho de banda) 
+3 IP dedicadas
+Certificado SSL gratis durante 1 año.
+	\item[Dominio:] Se Compra el dominio ``www.Farmacias.francs.com"\\  con el mismo proveedor a un precio muy razonable con contrato de un año al igual que el servicio de hosting.
+	\item[Seguridad web:]El mismo proveedor de hosting ofrece seguridad SSL
+	con las siguientes Caracteristicas:Asegura un sitio web
+Sólido cifrado SHA2 y encriptación de 2048 bits\\
+Disponible en Certificados SSL DV, OV y EV.\\
+El SSL EV hace que la barra del navegador se ponga verde 
+Incrementa el posicionamiento de tu sitio en Google.\\
+Marca confiable McAfee SECURE.\\
 \end{description}
-}
-
-
 \begin{figure}[htbp!]
 	\begin{center}
-		\fbox{\includegraphics[width=.9\textwidth]{images/arquitectura}}
+		\fbox{\includegraphics[width=18cm, height=20cm]{images/arquitectura}}
 		\caption{Arquitectura del sistema.}
 		\label{fig:arquitectura}
 	\end{center}

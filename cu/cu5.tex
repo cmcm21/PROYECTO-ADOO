@@ -1,0 +1,67 @@
+ \begin{UseCase}{CU5}{Registrar Venta Al Mostrador}{
+	EL crecimiento y funcionamiento adecuado de las farmacias de la franquicia se
+	basa en las ventas que se realizan en estas, por eso es que el sistema que se solicita, necesita una manera de administrar esas ventas realizadas en cada sucursal.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}.Darwin}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Tener un control de las salidas de medicamento por ventas y poder tener un reporte de ventas diarias, al igual que un control de los medicamentos que se venden.}
+		\UCitem{Entradas}{cantidad total a pagar, medicamentos que se venden y precio de venta de cada uno,por el momento solo se hacen pagos en efectivo,son Todos los datos requeridos en el formulario \IUref{IU19}{Formulario Venta}}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{comprobante de venta, medicamento(s)}
+		\UCitem{Destino}{Pantalla,impresora}
+		\UCitem{Precondiciones}{Los medicamentos a vender deben estar registrados en el sistema, el supervisor debió haber abierto la caja con anterioridad \UCref{CU9}{Abrir Caja}.}
+		\UCitem{Postcondiciones}{Disminuye la cantidad de los medicamentos que se vendieron, se tiene una venta más registrada en el sistema.}
+		\UCitem{Errores}{Que no se cuente con conexión a Internet,no haya energía eléctrica para utilizar un computador,Que no se realice una conexión a la base de datos,que el servidor se caiga,que los datos proporcionados estén erróneos, que el o los medicamentos estén registrados en el sistema pero no estén disponibles en la sucursal.}
+		\UCitem{viene de...}{\UCref{CU0}{Control de acceso}}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso incluye al caso de uso \UCref{IU0}{Control de Acceso}.
+		\UCpaso [\UCactor] presiona el botón \IUbutton{Ventas} que esta en la pantalla principal \IUref{IU1}{Pantalla principal}
+		\UCpaso verifica que los permisos de usuario sean permisos de cajero. \Trayref{A}
+		\UCpaso Despliega el Formulario \IUref{IU19}{Formulario Ventas} 
+		\UCpaso busca el id del cajero que esta actualmente con la sesión activa y llena el campo de ``Empleado" con ese id.
+		\UCpaso [\UCactor] en el primer campo de formulario ``Cliente" Selecciona la opción ``Publico en general".
+		\UCpaso identifica la opción seleccionada por el [\UCactor] y siendo esta opción ``Publico general"" deja el formulario como esta.
+		\UCpaso [\UCactor] lee el código de barras del medicamento con el lector de código de barras
+		\UCpaso Llena el campo de ``Medicamentos" con el código de barras que se introdujo del lector.\Trayref{B}.
+		\UCpaso Recibe un ``Enter" del lector de código de barras y añade otra fila para agregar un nuevo medicamento en el campo ``Medicamentos".
+		\UCpaso Agrega en una lista que crea temporalmente, el nombre del  medicamento y el precio de venta del medicamento que fue leído por el lector de código de barras.
+		\UCpaso muestra la lista temporal de los medicamentos en el campo ``Desglose de medicamentos y precios".\Trayref{C}
+		\UCpaso  Calcula el Total de los precios de venta de los medicamentos en la lista temporal y muestra la cantidad en el campo ``Valor Total".
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Guardar}.
+		\UCpaso Muestra el Mensaje {\bf MSG6-}``Confirmar[{\em Confirmar Operación }]¿Los datos del formulario son correctos?.''.
+		\UCpaso Presiona el botón \IUbutton{Aceptar}
+		\UCpaso Verifica que ningún campo del formulario este vació \Trayref{D}
+		\UCpaso Muestra el Mensaje {\bf MSG0-}``Exito[{\em Operación Realizada con exito }].''.
+		\UCpaso Muestra la pantalla \IUref{IU1}{Pantalla Principal}
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Permiso Denegado}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}``Cancelado[{\em Permiso Denegado }].''.
+			\UCpaso Regresa al paso 1 de este caso de uso.
+		\end{UCtrayectoriaA}
+
+%--------------------------------------
+		\begin{UCtrayectoriaA}{B}{El lector de barras no pudo leer bien el código}
+			\UCpaso sigue su ejecución sin llenar el campo ``Medicamentos""
+			\UCpaso Continua en el paso 8 de este caso de uso.	
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{C}{Lista de medicamentos muy larga }
+			\UCpaso Muestra en el formulario \IUref{IU19}{Formulario Ventas} un 					``scroll" en el campo de ``Desglose de medicamentos y precios"
+			\UCpaso Regresa al paso 13 de este caso de uso.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+			\begin{UCtrayectoriaA}{D}{Existe por lo menos un campo obligatoria que esta vació}
+			\UCpaso remarca con Rojo los campos obligatorios que están vacíos 
+			y pone la leyenda ``Campo Obligatorio".
+			\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la operación [{\em Campos obligatorios vacíos}] Los campos llenados con Rojo no pueden estar vacíos.''.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+			\UCpaso Regresa a la pantalla \IUref{IU19}{Formulario Ventas} Mostrando los campos en rojo y dejando la información introducida por el [\UCactor] en los pasos anteriores de este casos de uso
+		\end{UCtrayectoriaA}

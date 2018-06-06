@@ -1,0 +1,49 @@
+\begin{UseCase}{CU2}{Consultar Medicamento}{
+		
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}-}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Poder saber datos del medicamento}
+		\UCitem{Entradas}{Nombre del medicamento, ingrediente activo, }
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Medicamento que coincida con la busqueda }
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Tener medicamentos registrados}
+		\UCitem{Postcondiciones}{}
+		\UCitem{Errores}{}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso [\UCactor] Tiene que estar en las pantallas de cajero.
+		\UCpaso El sistema genera y despliega la pantalla \IUref(IUx){ConsultaMedicamento} \Trayref{A}\Trayref{C}
+		\UCpaso [\UCactor] Ingresa el nombre del medicamento o ingrediente activo en la barra de busqueda de \IUref(IUx){ConsultaMedicamento}		
+		\UCpaso El sistema filtra los medicamentos segun la coincidencia(se muestra y actualiza la pantalla \IUref(IUx){ConsultaMedicamento}) \Trayref{B}\Trayref{C}
+		\UCpaso [\UCactor] Da en el boton aceptar
+		\UCpaso El sistema regresa a las pantallas del cajero.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Error relacionado con la base de datos}
+			\UCpaso Muestra el Mensaje {\bf MSG1-``Error en la Operación''}.
+		    \UCpaso El sistema regresa a las pantallas del cajero.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{No hay coincidencia}
+			\UCpaso Semuestra mensaje no documentado de ``Sin coincidencias''
+			\UCpaso Continua en el paso 4 del \UCref{CU2}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		\begin{UCtrayectoriaA}{C}{Da en el boton aceptar}
+		\UCpaso El sistema regresa a las pantallas del cajero.
+		\end{UCtrayectoriaA}
+%%--------------------------------------
+%	\begin{UCtrayectoriaA}{D}{Correo Electronico de recuperación de contraseña no se envio}
+%			\UCpaso Muestra el Mensaje {\bf MSG04-}``Error [{\em Correo no enviado}] Revisa tu conexión y vuelve a enviar el mensaje .''.
+%			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+%			\UCpaso Continua en el paso 7 del \UCref{CU2}.
+%		\end{UCtrayectoriaA}
+%%--------------------------------------
