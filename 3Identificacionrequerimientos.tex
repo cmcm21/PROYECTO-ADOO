@@ -1,56 +1,60 @@
 \chapter{Identificación de requerimientos}
 \label{cap:reqUsr}
 
-	En este capítulo se modela el alcance del sistema. Se presentan inicialmente los Actores involucrados y sus requerimientos, especificando cuales se alcanzaron en la primera iteración y cuales serán trabajados en la segunda iteración. Después se presentan los requerimientos funcionales de esta iteración y al final se presenta el modelo Físico y Lógico del sistema.
+	En este capítulo se modela el alcance del sistema,
+	
 
 %---------------------------------------------------------
 \section{Objetivo General Del Proyecto}
-Llevar  el  control  completo  de  la  farmacia,  mediante  un   único  sistema  conectado  y utilizado por todos los empleados en las diferentes Sucursales de la franquicia.
-\subsection{Objetivos Específicos}
-Realizar una revisión sobre la información o requerimientos necesarios para el funcionamiento correcto del sistema.\\
-Encontrar y resolver las diferencias que puede llegar a interpretar el cliente con las del programador, para eso se definirán los requerimientos en un lenguaje apto para ambas partes.
-También es importante revisar que el abrir una sucursal nueva sea solo dificultad física y no técnica.Una vez terminado, ser fácil de usar por los empleados.Mayor claridad de las ventas.
+Llevar  el  control  completo  de  la  farmacia,  mediante  un   único  sistema  conectado  y utilizado por todos los empleados en las diferentes sucursales de la franquicia.
+\section{Objetivos Específicos}
+\begin{itemize}
+\item Resolver los problemas que surjan en el entendimiento del negocio.
+
+\item Reducir los problemas de inventario con base a las salidas  y entradas de medicamento.
+
+\item Tener una visión del general sobre el ámbito laboral de las múltiples sucursales como de los empleados que operan en ella.
+
+\end{itemize}
 
 \section{Requerimientos del Usuario}
-RU1 Registrar Medicamentos\\
-Descripción: El usuario Necesita registrar los nuevos medicamentos que se venderán en la farmacia\\
-\\
-RU2 Registrar entregas de proveedores\\
-Descripción: El usuario necesita registrar los medicamentos que llegarón de un proveedor, de la misma forma necesita información del proveedor que hace la entrega ,necesita también la hora y la fecha que se hizó la entrega, y necesita un comprobante de parte del proveedor.\\
-\\
-RU3 Consultar Medicamento por cada Sucursal\\
-Descripción:El usuario necesita conocer el medicamento que se maneja así como la cantidad de cada uno de estos medicamentos.\\
-\\
-RU3 Registrar Clientes\\
-Descripción: El usuario requiere Identificar a los clientes que visitan su farmacia con frecuencia para poder darles descuentos y promociones\\
-\\
-RU4 Registrar Empleados\\
-Descripción:El usuario requiere Tener guardada la información de los trabajadores que laboran en la franquicia de la farmacia, de la misma manera necesita asignarles sucursal y en caso de que sea un supervisor asignarle varias sucursales (mínimo 1 máximo 3) \\
-\\
-RU5 Control de la caja.
-Descripción: El usuario necesita que alguien vigile el dinero con el que se empieza el día y al principio de cada turno (matutino,vespertino, nocturno) así como al final de estos mismos turnos.\\
-\\
-RU6 Realizar una Venta\\
-Descripción: El usuario requiere guardar información de que medicamento se vende en cada sucursal así como el dinero que entra cada que se realiza una venta en estas, también en caso de que se haga una venta de varios medicamentos el desglose de cada medicamento que se vendió con su precio de Venta.\\
-\\
-RU7 Consultar Medicamento Local
-Descripción: El Usuario necesita saber que medicamentos tiene en la sucursal en la que se encuentra laborando para poder dar un mejor servicio al cliente.\\
-\\
-RU8 Registrar Sucursal
-Descripción: El usuario requiere que se guarde información de cada sucursal como su paradero,el nombre y teléfono para poder tener un mejor control de estas, sabiendo donde se encuentran para poder asignar Empelados y medios de contacto para tener comunicación continua con la sucursal y un nombre para identificarlas.\\
-\\
-RU9 Consultar Ventas por día\\
-Descripción: El usuario Necesita poder conocer las ventas que se realizador durante la hora de atención de la farmacia(9:00am A 12:00pm) para tener control de las ventas y el progreso de la empresa, así como la administración de los medicamentos.\\
-RU10 Registrar Proveedor
-Descripción: El usuario Necesita Registrar a los proveedores que le surten de medicamentos, para poder hacer alguna reclamación o Encargar medicamentos con confianza.
-\\
-RU11 Consultar Proveedores
-Descripción: El Usuario necesita Conocer a los proveedores para hacer algún pedido,
-o en su defecto Aclarar algún malentendido.
+\begin{itemize}
+
+\item RU1 Registrar Medicamentos\\
+Descripción: El dueño necesita registrar los nuevos medicamentos que se venderán en la farmacia.\\
+\item RU2 Registrar entregas de proveedores\\
+Descripción: El cajero necesita registrar los medicamentos que llegarón de un proveedor, de la misma forma necesita información del proveedor que hace la entrega ,requiere la hora y fecha en que se realizó la entrega, y un comprobante de parte del proveedor.\\
+
+\item RU3 Consultar Medicamento por cada Sucursal\\
+Descripción:El usuario necesita conocer el medicamento que se maneja así como la cantidad de cada uno de estos medicamentos por cada una de las sucursales.\\
+
+\item RU4 Registrar Empleados\\
+Descripción:El dueño necesita tener una forma para registrar la información de los nuevo trabajadores que laboran en la franquicia de la farmacia, de la misma manera necesita asignarles sucursal para laborar; en caso de que sea supervisor asignarle un máximo de 3.\\
+
+\item RU5 Control de la caja.
+Descripción: El dueño necesita que alguien monitorice el dinero con el que se empieza cada turno (matutino, vespertino, nocturno) así como al final de estos.\\
+
+\item RU6 Realizar una Venta\\
+Descripción: El cajero requiere registrar nombre,costo y unidades de cada medicamento en la venta.\\
+
+\item RU7 Registrar Sucursal\\
+Descripción: El dueño requiere registrar información de cada nueva sucursal( dirección,el nombre y teléfono).\\
+
+\item RU8 Consultar Ventas por día\\
+Descripción: El supervisor necesita conocer las ventas que se realizaron durante la hora de atención de la farmacia(9:00am A 12:00pm) para tener una visión de las ventas.\\
+
+\item RU9 Registrar Proveedor
+Descripción: El dueño Necesita Registrar a los proveedores que le surten de medicamentos.\\
+
+\item RU10 Consultar Proveedores
+Descripción: El dueño necesita consultar a los proveedores para hacer algún pedido,
+o en su defecto aclarar algún inconveniente.
+
+\end{itemize}
 
 \section{Requerimientos funcionales}
 RF1 Registrar Medicamento\\
-Descripcion: El sistema Guarda la información de forma estructurada de los campos de importancia de un medicamento, como su nombre, ingredientes Activos, Precios de compra y venta, caducidad, y todos los campos mencionados en la entidad ``Medicamento" En la Sección ``Modelo del dominio del problema" en el  Capitulo anterior.\\
+Descripcion: El sistema Guarda la información de forma estructurada de los campos de importancia de un medicamento, como su nombre, ingredientes Activos con su dosificación, Precios de compra y venta, caducidad, presentación, vía de administración, laboratorio,lote,advertencias y existencias\\
 Prioridad: MA\\
 RU:RU1.\\
 \\
