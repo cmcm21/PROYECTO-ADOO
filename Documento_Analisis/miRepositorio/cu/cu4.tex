@@ -1,0 +1,106 @@
+ \begin{UseCase}{CU4}{Registrar Supervisor}{
+ 		En la franquicia es necesario tener información de los proveedores que nos surten de medicamentos, para eso el sistema proporciona la opción de agregar un nuevo supervisor realizando lo siguiente:
+		el [\UCactor]  presiona el botón \IUbutton{Empleados} en la pantalla \IUref{IU1}{Pantalla Principal} después presiona el botón \IUbutton{Supervisor}
+		y en la pantalla \IUref{IU13}{Tabla supervisores} presiona el botón \IUbutton{+Nuevo} y llena el formulario \IUref{IU2}{Formulario Supervisores}
+		guardando la información en el sistema para su futura consulta.
+	}
+		\UCitem{Versión}{\color{Gray}0.9}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}.Fernando Darwin Vázquez Cruz}
+		\UCitem{Actor}{Dueño}
+		\UCitem{Propósito}{para que se administre de mejor manera las sucursales y cajeros }
+		\UCitem{Entradas}{datos del supervisor: nombre,apellido paterno, apellido materno, teléfono, salario, email, y las sucursales que va operar.}
+		\UCitem{Origen}{Teclado,mouse}
+		\UCitem{Salidas}{nombre, apellido paterno, apellido materno, teléfono, salario, email, sucursales a operar, estado activo del supervisor}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{El Supervisor no debe estar registrado en el sistema,debe existir por lo menos una sucursal registrada en el sistema con un lugar libre para que labore un supervisor.}
+		\UCitem{Postcondiciones}{al menos una sucursal y máximo tres sucursales tendrán asignado un nuevo supervisor,un supervisor tendrá asignada una sucursal como mínimo  tres máximo.}
+		\UCitem{Errores}{Que no se cuente con conexión a Internet,no haya energía eléctrica para utilizar un computador,Que no se realice una conexión a la base de datos,que el servidor se caiga,que los datos proporcionados estén erróneos, que no haya cupo en ninguna sucursal.}
+		\UCitem{Viene de}{\UCref{CU0}{Control de acceso}}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{Aprobado}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso incluye al caso de uso \UCref{IU0}{Control de Acceso}.
+		\UCpaso [\UCactor] presiona el botón \IUbutton{Empleados} en la pantalla \IUref{IU1}{Pantalla principal}
+		\UCpaso verifica que los permisos de usuario sean permisos de Dueño. \Trayref{A}
+		\UCpaso Despliega una lista con los botones \IUbutton{Supervisor} y 
+		\IUbutton{Cajero} en la pantalla \IUref{IU1}{pantalla principal}
+		\UCpaso [\UCactor] presiona el botón \IUbutton{Supervisor} en la pantalla \IUref{IU1}{pantalla principal}.
+		\UCpaso Muestra la pantalla \IUref{IU13}{Tabla supervisores}
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{+Nuevo} en la pantalla \IUref{IU13}{Tabla supervisores}
+		\UCpaso Genera una lista con los nombres de las Sucursales que aun no tienen tres supervisores asignados.\Trayref{B}
+		\UCpaso Muestra la pantalla \IUref{IU2}{Formulario Supervisor}
+		\UCpaso Muestra las Sucursales generadas anteriormente como ``checklist"
+		\UCpaso [\UCactor] llena los campos: nombre,Apellido Paterno,Apellido Materno, Email, Teléfono y Salario.
+		\UCpaso [\UCactor] selecciona las Sucursales en la que el supervisor va a laborar.\Trayref{G}
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Guardar}
+		\UCpaso Verifica que los campos nombre, apellido paterno, apellido materno
+		sean alfabéticos.\Trayref{H}
+		\UCpaso Verifica que el campo de Email sea alfanumérico @ alfanumérico.com o .mx \Trayref{I}
+		\UCpaso Verifica que ningún campo del formulario este vacío \Trayref{C}
+		\UCpaso Verifica que el salario sea un dígito.\Trayref{D}
+		\UCpaso Verifica que al menos una sucursal sea seleccionada.\Trayref{F}
+		\UCpaso Actualiza la tabla \IUref{IU13}{Tabla supervisores} con  la información del formulario.
+		\UCpaso Despliega el mensaje {\bf MSG06-}``Confirmar Operacion[{\em Confirmar operación}].''.
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{si}\Trayref{J}
+		\UCpaso Guarda la información del supervisor.
+		\UCpaso Despliega el mensaje {\bf MSG0-}``Operación Exitosa[{\em Exito}].''.
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{ok}.
+
+		\UCpaso Muestra la pantalla \IUref{IU13}{Tabla Supervisores} 
+	\end{UCtrayectoria}
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Permiso Denegado}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}``Cancelado[{\em Permiso Denegado }].''.
+			\UCpaso Muestra la pantalla \IUref{IU13}{Tabla Supervisores}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{No hay ninguna Sucursal Registrada en el sistema con lugares para supervisor disponibles. }
+			\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la operación [{\em No hay sucursales Registradas con lugares de supervisor disponible.}] antes de registrar a algún supervisor es necesario que se registre por lo menos una Sucursal con un lugar disponible, o que exista una Sucursal con puestos vacantes.''.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{ok}.
+			\UCpaso Muestra la pantalla \IUref{IU13}{Tabla Supervisores}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		\begin{UCtrayectoriaA}{C}{Existe por lo menos un campo obligatorio que esta vacío}
+			\UCpaso remarca con Rojo los campos obligatorios que están vacíos 
+			y pone la leyenda ``Campo Obligatorio".
+			\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la operación [{\em Campos obligatorios vacíos}] Los campos llenados con Rojo no pueden estar vacíos.''.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+			\UCpaso Regresa a la pantalla \IUref{IU2}{Formulario Supervisor} Mostrando los campos en rojo y dejando la información introducida en el paso 11 de este caso de uso, como se quedo.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{D}{Tipo de Dato Incorrecto}
+		\UCpaso Muestra el Mensaje {\bf MSG01-}``Error en la Operación [{\em Tipo de Dato Invalido}]En el campo salario solo se debe introducir números.''.
+			\UCpaso remarca con rojo el campo que debe ser dígito, y muestra la leyenda ``Este campo debe ser un dígito" debajo del campo ``salario".			
+			\UCpaso Continua en el paso 11 de este caso de uso.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{F}{Sucursales mal asignadas}
+		\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la Operación [{\em Asignación incorrecta de sucursal}]Verifica que por lo menos se le haya asignado una sucursal al supervisor que se esta registrando.''.
+			\UCpaso Genera la leyenda ``Asigna por lo menos una Sucursal" en rojo y la coloca hasta abajo de la pantalla \IUref{IU2}{Formulario Supervisor}
+			\UCpaso Continua en el paso 11 de este caso de uso.
+		\end{UCtrayectoriaA}
+%---------------------------------------------
+	\begin{UCtrayectoriaA}{G}{Máximo de sucursales asignadas rebasado}
+			\UCpaso bloquea las checklist de las sucursales no seleccionadas.
+			\UCpaso Continua en el paso 9 de este caso de uso.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		\begin{UCtrayectoriaA}{H}{Los nombres están con un formato incorrecto}
+		\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la Operación [{\em Asignación incorrecta de nombres y apellidos}].''.
+			\UCpaso Genera la leyenda ``Los campos de nombre, apellido paterno y apellido materno deben ser alfabéticos" en rojo y la coloca hasta abajo de la pantalla \IUref{IU2}{Formulario Supervisor}
+			\UCpaso Continua en el paso 11 de este caso de uso.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{I}{El correo esta en formato incorrecto}
+		\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la Operación [{\em Asignación incorrecta de correo}].''.
+			\UCpaso Genera la leyenda ``el correo debe ser con formato ejemplo@ejemplo.com" en rojo y la coloca hasta abajo de la pantalla \IUref{IU2}{Formulario Supervisor}
+			\UCpaso Continua en el paso 11 de este caso de uso.
+		\end{UCtrayectoriaA}
+%---------------------------------------------
+	\begin{UCtrayectoriaA}{J}{Se cancela la operación}
+			\UCpaso [\UCactor] presiona el botón \IUbutton{Cancelar}
+			\UCpaso regresa a la pantalla  \IUref{IU13}{Tabla Supervisores}
+		\end{UCtrayectoriaA}

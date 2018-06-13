@@ -1,0 +1,53 @@
+\begin{UseCase}{CU2}{Consultar Medicamento}{
+		 El usuario abre la pantalla \IUref{IU17}{TablaMedicamento} donde se muestra la barra de busqueda y los filtros de busqueda, donde el usuario puede insertar el nombre del medicamento o ingrediente activo o codigo de barras, y el sistema muestra el resultado de la busqueda.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}-}
+		\UCitem{Actor}{Dueño, Supervisor, Cajero}
+		\UCitem{Propósito}{Saber las existencias de los medicamentos asi como que medicamentos hay}
+		\UCitem{Entradas}{Nombre del medicamento, ingrediente activo, codigo de barras}
+		\UCitem{Origen}{Teclado, lector de codigo de barras}
+		\UCitem{Salidas}{Medicamento que coincida con la busqueda}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{Tener medicamentos registrados}
+		\UCitem{Postcondiciones}{No aplica}
+		\UCitem{Errores}{No hay respuesta del servidor, no hay conección a internet}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase} 	
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Incluye el caso de uso \UCref{CU0}{Control de acceso}
+		\UCpaso [\UCactor] Preciona la opcción medicamentos en el side-bar.
+		\UCpaso El sistema muestra la pantalla \IUref{IU17}{TablaMedicamento}.
+		\UCpaso [\UCactor] Selecciona el tipo de busqueda segun se requiera (nombre del medicamento o ingrediente activo o codigo de barras)
+		\UCpaso [\UCactor] Ingresa el nombre del medicamento o ingrediente activo o codigo de barras en la barra de busqueda segun el tipo de busqueda seleccionada, en la pantalla \IUref{IU17}{TablaMedicamentos}.		
+		\UCpaso [\UCactor] Da en el boton \IUbutton{Buscar}
+		\UCpaso El sistema filtra segun el tipo de busqueda con los caracteres ingresados en la barra de busqueda.
+		\UCpaso El sistema muestra y actualiza la pantalla \IUref{IU17}{TablaMedicamentos} \Trayref{A}
+		\UCpaso [\UCactor] Realiza operaciones con el medicamento escojido.
+		\UCpaso [\UCactor] Preciona en escritorio, regresa a la pantalla principal.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{No hay coincidencias de medicamentos en inventario}
+			\UCpaso El sistema actualiza la pantalla \IUref{IU17}{TablaMedicamentos},la muestra vacia.
+		    \UCpaso [\UCactor] Preciona en escritorio, regresa a la pantalla principal.
+		\end{UCtrayectoriaA}
+%%----------------------------------------
+%		\begin{UCtrayectoriaA}{B}{No hay coincidencia}
+%			\UCpaso Semuestra mensaje no documentado de ``Sin coincidencias''
+%			\UCpaso Continua en el paso 4 del \UCref{CU2}.
+%		\end{UCtrayectoriaA}		
+%%--------------------------------------
+%		\begin{UCtrayectoriaA}{C}{Da en el boton aceptar}
+%		\UCpaso El sistema regresa a las pantallas del cajero.
+%		\end{UCtrayectoriaA}
+%%%--------------------------------------
+%%	\begin{UCtrayectoriaA}{D}{Correo Electronico de recuperación de contraseña no se envio}
+%%			\UCpaso Muestra el Mensaje {\bf MSG04-}``Error [{\em Correo no enviado}] Revisa tu conexión y vuelve a enviar el mensaje .''.
+%%			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+%%			\UCpaso Continua en el paso 7 del \UCref{CU2}.
+%%		\end{UCtrayectoriaA}
+%%%--------------------------------------

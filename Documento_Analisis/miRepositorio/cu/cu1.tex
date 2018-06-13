@@ -1,0 +1,79 @@
+ \begin{UseCase}{CU1}{Registro de medicamento}{
+		El Dueño es el unico actor que puede hacer un registro de un medicamento en el sistema, despliegamos la pantalla  \IUref{IU5}{FormularioMedicamento}, verificamos porveedores y medicamentos, actualizamos inventario, guardamos en el sistema.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+		\UCitem{Supervisa}{\color{Gray}.}
+		\UCitem{Actor}{Dueño}
+		\UCitem{Propósito}{El dueño registra un nuevo medicamento en el sistema para poder hacer las ventas posteriores}
+		\UCitem{Entradas}{Nombre de medicamento,existencias, dosis, lote, advertencias, fecha de caducidad del lote,  código de barras, presentación, via de administración, precio de venta, precio de compra, ingredientes activos, cantidad de ingrediente activo, nombre del proveedor, RCF del proveedor}
+		\UCitem{Origen}{Teclado, Base de datos}
+		\UCitem{Salidas}{Nombre de medicamento,existencias, dosis, lote, advertencias, fecha de caducidad del lote,  código de barras, presentación, via de administración, precio de venta, precio de compra, ingredientes activos, cantidad de ingrediente activo, nombre del proveedor, RCF del proveedor, estado del medicamento}
+		\UCitem{Destino}{Pantalla \IUref{IU17}{FormularioMedicamento}}
+		\UCitem{Precondiciones}{No tener ya registrado el medicamento,tener registro del proveedor, tener permisos de dueño, tener existencias del medicamento a agregar. }
+		\UCitem{Postcondiciones}{Modifica el inventario, agrega un registro de nuevo medicamento en la patalla \IUref{IU17}{TablaMedicamentos}}
+		\UCitem{Errores}{Medicamento ya registrado, proveedor no encontrado, error de conexión}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revision}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Incluye el caso de uso \UCref{CU0}{Control de acceso}
+		\UCpaso [\UCactor] Tiene que tener permisos de dueño.
+		\UCpaso [\UCactor] Abre la pantalla \IUref{IU17}{TablaMedicamento} con el side-bar, boton  \IUbutton{+Nuevo}.
+		\UCpaso El sistema genera la lista despliegabre de los laboratorios \Trayref{A}.
+		\UCpaso El sistema genera la lista despliegabre de ingredientes activos \Trayref{A}.%CANCELAR OPERACION
+		\UCpaso El sistema despliega la pantalla \IUref{IU5}{FormularioMedicamento} con las listas del paso anterior.
+		\UCpaso [\UCactor] Tiene que llenar los datos solicitados por el formulario del medicamento y proveedor.\Trayref{H}%cancelar
+		\UCpaso	[\UCactor]Preciona el boton \IUbutton{Guardar}.\Trayref{H}%cancelar
+		%----------------
+		\UCpaso El sistema verifica el formulario no este vacio \Trayref{B}.
+		\UCpaso	El sistema verifica el nombre del medicamento \Trayref{C}.
+		%\UCpaso El sistema verifica que las existencias del nuevo medicamento no sean 0 \Trayref{D}.
+		\UCpaso El sistema comprueba el proveedor este registrado \Trayref{E}.
+		\UCpaso El sistema verifica que la fecha de caducidad no sea próxima a menor de 2 años\Trayref{F}.
+		\UCpaso El sistema verifica que le precio de venta sea mayor al de compra \Trayref{G}.
+		\UCpaso EL sistema registra el nuevo medicamento en el inventario.
+		\UCpaso El sistema regresa a la pantalla principal.
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	    \begin{UCtrayectoriaA}{A}{No puede generar lista despliegabre}
+			\UCpaso El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}
+			\UCpaso EL sistema muestra la pantalla \IUref{IU17}{FormularioMedicamento}.
+		\end{UCtrayectoriaA}
+%----------------------------------------
+		\begin{UCtrayectoriaA}{B}{Hay datos del formulario que estan vacios}
+			\UCpaso El sistema muestra abajo en la pantalla el/los nombres de los campos vacios.
+			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+		\begin{UCtrayectoriaA}{C}{El nombre del medicamento tiene un caracter no alfabetico}
+			\UCpaso El sistema muestra abajo en la pantalla mensaje de error nombre no valido
+			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+%--------------------------------------
+%		\begin{UCtrayectoriaA}{D}{Las existencias del medicamento son 0}
+%			\UCpaso El sistema muestra abajo en la pantalla mensaje de error existencias no validas
+%			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+%		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{E}{El proveedor no encontrado}
+			\UCpaso El sistema muestra abajo en la pantalla mensaje de error el proveedor no esta registrdo en el sistema.
+			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{F}{La fecha de caducidad es menor a 2 años}
+			\UCpaso El sistema muestra abajo en la pantalla mensaje de error fecha de caducidad fuera del rango permitido de 2 años
+			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{G}{Condición de precio es falsa}
+			\UCpaso El sistema muestra abajo en la pantalla mensaje de error en los precios de compra y venta.
+			\UCpaso Continua en el paso 7 del \UCref{CU1}.
+		\end{UCtrayectoriaA}
+%--------------------------------------
+		\begin{UCtrayectoriaA}{H}{Preciona el boton cancelar}
+				\UCpaso El sistema regresa a la pantalla  \IUref{IU17}{FormularioMedicamento}.
+		\end{UCtrayectoriaA}		

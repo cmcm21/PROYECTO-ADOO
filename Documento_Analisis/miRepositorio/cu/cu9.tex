@@ -1,0 +1,58 @@
+\begin{UseCase}{CU9}{Abir Caja}{
+		El supervisor abrira la caja para que esta pueda ser usada por un cajero y se puedan realizar ventas durante el turno actual, para ello deberá ingresar al sistema como supervisor, una ves en la pantalla principal seleccionara la opción abrir caja, una ves en la ventana abrir caja debe seleccionar un turno y un empleado de las diferentes opciones, dicho empleado es el que hará uso de la caja en dicho turno y cofirmará la acción.
+		
+	}
+		\UCitem{Versión}{\color{Gray}1.1.2}
+		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
+		\UCitem{Supervisa}{\color{Gray}Carlos Miguel Correa Medina}
+		\UCitem{Actor}{Supervisor}
+		\UCitem{Propósito}{Hacer que la apertura de caja sea lo más eficiente posible para así reducir el tiempo en que cada sucursal tarda en entrar en operaciones día con día.}
+		\UCitem{Entradas}{Nombre, apellido paterno y apellido materno del empleado, Turno.}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Nombre, apellido paterno y apellido materno del supervisor, nombre, apellido paterno y apellido materno del cajero, Turno, Fecha y Hora.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{La caja que se desea abrir debe estar cerrada y la sucursal debe laborar dicho día.}
+		\UCitem{Postcondiciones}{La caja quedara habilitada para uso del cajero.}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores.}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{Aprobado}
+		\UCitem{Viene de}{CU0}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Incluye el caso de uso \UCref{CU0} Control de acceso.
+		\UCpaso [\UCactor] Selecciona La opción Abrir Caja en la \IUref{01}{Pantalla Principal} presionando el botón \IUbutton{Abrir Caja}.
+		\UCpaso Verifica que los permisos sean de supervisor. \Trayref{A}
+		\UCpaso Genera una lista con los 3 turnos laborales en el campo de turno.
+		\UCpaso Genera una lista despegable de los empleados disponibles en la sucursal, en el campo de cajero.
+		\UCpaso Llena el campo Fecha y Hora con la fecha y la hora actual del sistema. \Trayref{B}
+		\UCpaso Genera y Despliega la \IUref{21}{Abrir Caja} con los datos del supervisor actualmente en sesión y con los datos generados anteriormente. 
+		\UCpaso [\UCactor] Selecciona un turno de la lista despegable en el campo Turno. 
+		\UCpaso Filtra la lista de los empleados dependido del turno seleccionado.
+		\UCpaso [\UCactor] Selecciona un empleado de la lista de empleados en el campo empleado.
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}. 
+		\UCpaso Despliega el mensaje {\bf MSG06-} {Confirmar Operación}. 
+		\UCpaso [\UCactor] Presiona el botón {Si!}. \Trayref{C}
+		\UCpaso Desbloquea las opciones de venta e ingresos en la pantalla \IUref{01}{pantalla principal}
+		\UCpaso Despliega el mensaje {\bf MSG0-} {Operación Exitosa}
+		\UCpaso [\UCactor] Presiona el botón {OK}.		
+		\UCpaso Redirige al [\UCactor] a la \IUref{01}{Pantalla Principal}.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Permiso denegado}] No cuentas con los permisos necesarios".
+			\UCpaso  Redirige al [\UCactor] a la \IUref{01}{Pantalla Principal}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{B}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` [{\em Error en la operación}] Los campos de Fecha y Hora no se llenaron de manera incorrecta".
+			\UCpaso Continúa en el paso 2 del \UCref{CU10}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{C}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` [{\em Cancelado}]Permiso Denegado.
+			\UCpaso Continúa en el paso 7 del \UCref{CU10}.
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------

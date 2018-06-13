@@ -1,0 +1,95 @@
+\begin{UseCase}{CU12}{Registrar Proveedor}{
+		Es necesario tener un apartado para registrar proveedores, ya que es necesario llevar un registro y control de ellos y los productos que nos otorgan para vender, asi mismo con el tiempo pueden registrarse mas proveedores, para registrar un proveedor solo puede hacerlo el dueño, por lo que el dueño es el que debe iniciar sesión, selecciona la opción de Compras y luego la opción de Proveedores, una ves desplegada la Tabla Proveedores presiona el botón Nuevo, lo cúal despliega el Formulario Proveedor y se solicitan los datos del proveedor: Nombre, Apellido Paterno, Apellido Materno, correo electrónico, teléfono y RFC, al finalizar el llenado de datos confirma la operación con el botón aceptar y el sistema guarda la información. 
+	}
+		\UCitem{Versión}{\color{Gray}1.1.4}
+		\UCitem{Autor}{\color{Gray}Zapata Jasso José Rodolfo}
+		\UCitem{Supervisa}{\color{Gray}Carlos Miguel Correa Medina}
+		\UCitem{Actor}{Dueño}
+		\UCitem{Propósito}{Tener un registro de las compañías que surtirán nuestras sucursales con sus productos para su venta.}
+		\UCitem{Entradas}{Nombre del Proveedor, Correo Electrónico del Proveedor, Telefono, RFC.}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Nombre del Proveedor, Correo Electrónico del Proveedor, Telefono, RFC, Estado.}
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{El proveedor aun no debe de estar registrado en el sistema.}
+		\UCitem{Postcondiciones}{Se tendrá un proveedor mas en la lista de los proveedores.}
+		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores.}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{Aprobado}
+		\UCitem{Viene de}{CU0}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso Incluye el caso de uso \UCref{CU0} Control de acceso.
+		\UCpaso[\UCactor] Selecciona la opción Compras en la \IUref{01}{Pantalla Principal} presionando el botón \IUbutton{Compras} y despliega las opciones Ingresos y Proveedores.
+		\UCpaso[\UCactor] Selecciona La opción Proveedores presionando el botón \IUbutton{Proveedores}.
+		\UCpaso Verifica que los permisos sean de dueño. \Trayref{A}
+		\UCpaso Genera y Despliega la \IUref{IU15}{Tabla Proveedores}.
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{+ Nuevo} para agregar un nuevo proveedor.
+		\UCpaso Genera y Despliega el \IUref{IU8}{Formulario Proveedor} con los siguientes requisitos para llenar el formulario: Nombre, Apellido Paterno, Apellido Materno, Correo Electrónico (E-mail), Teléfono, RFC.
+		\UCpaso[\UCactor] Llena los datos con lo que se solicita en cada campo.
+		\UCpaso[\UCactor]Al finalizar presiona el botón \IUbutton{Guardar}.
+		\UCpaso Verifica que el nombre, apellido paterno y apellido materno sean alfabéticos. \Trayref{B}
+		\UCpaso Verifica que el correo sea alfanuméricos. \Trayref{C}
+		\UCpaso Verifica que el correo tenga arroba.  \Trayref{D}
+		\UCpaso Verifica que el correo tenga terminación en .com o .mx \Trayref{E}
+		\UCpaso Verifica que el teléfono solo tenga valores numéricos. \Trayref{F}
+		\UCpaso Verifica que el RFC sea de máximo 13 dígitos. \Trayref{G}
+		\UCpaso Verifica que el RFC sea alfanumérico. \Trayref{H}
+		\UCpaso Despliega el mensaje {\bf MSG06-} {Confirmar Operación}. 
+		\UCpaso [\UCactor] Presiona el botón {Si!}. 
+		\UCpaso Guarda la información del nuevo proveedor.
+		\UCpaso Despliega el mensaje {\bf MSG0-} {Operación Exitosa}
+		\UCpaso [\UCactor] Presiona el botón {OK}.
+
+		\UCpaso Redirige al [\UCactor] a la  \IUref{15}{Tabla Proveedores}.
+	\end{UCtrayectoria}
+
+
+%-------------------------------------------------------------------------
+\begin{UCtrayectoriaA}{A}{Error.}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` Cancelado [{\em Permiso denegado}] No cuentas con los permisos necesarios".
+			\UCpaso  Redirige al [\UCactor] a la \IUref{01}{Pantalla Principal}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{B}{Error.}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}``Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{8}{Proveedor Formulario}.''.
+			\UCpaso El sistema genera el mensaje: Los campos del nombre del proveedor no son alfabéticos.
+			\UCpaso Lo muestra al final de la  \IUref{8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{C}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
+			\UCpaso El sistema genera el mensaje: Los campos del correo del proveedor no son alfanuméricos.
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{D}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
+			\UCpaso El sistema genera el mensaje: Los campos del correo del proveedor no tienen arroba.
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{E}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Agregar proveedor}.''.
+			\UCpaso El sistema genera el mensaje:  Los campos del correo del proveedor no tienen terminación en .com o .mx
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{F}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
+			\UCpaso El sistema genera el mensaje: Los campos del teléfono del proveedor no son numéricos.
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{G}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Agregar proveedor}.''.
+			\UCpaso El sistema genera el mensaje: El RFC ingresado tiene más de 13 digitos.
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{H}{Error}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}`` Error [{\em  un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
+			\UCpaso El sistema genera el mensaje: El RFC ingresado no tiene datos alfanumericos.
+			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+		\end{UCtrayectoriaA}
+%-------------------------------------------------------------------------

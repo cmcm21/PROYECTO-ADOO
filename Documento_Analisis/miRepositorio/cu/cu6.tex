@@ -1,0 +1,57 @@
+ \begin{UseCase}{CU6}{Registrar Cliente}{
+	A los clientes que frecuentan comprar medicamentos con la Franquicia se les puede registrar en el sistema para que puedan recibir descuentos, y estos clientes estén identificados por el sistema.
+	}
+		\UCitem{Versión}{\color{Gray}0.1}
+		\UCitem{Autor}{\color{Gray}Correa Medina Carlos Miguel}
+		\UCitem{Supervisa}{\color{Gray}.Darwin}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Tener un acercamiento con el cliente para que este siga teniendo a la franquicia como preferente en la compra de medicamentos.}
+		\UCitem{Entradas}{Nombre,Apellido Paterno, Apellido Materno, Email,Teléfono,tarjeta}
+		\UCitem{Origen}{Teclado}
+		\UCitem{Salidas}{Nombre, Apellido paterno, Apellido Materno,Email, teléfono, tarjeta y estado(activo o desactivo) }
+		\UCitem{Destino}{Pantalla}
+		\UCitem{Precondiciones}{previamente la caja debe estar abierta por el supervisor y el cliente no debe estar registrado en el sistema.}
+		\UCitem{Postcondiciones}{Aumenta la cantidad de clientes registrados en el sistema.}
+		\UCitem{Errores}{Que no se cuente con conexión a Internet,no haya energía eléctrica para utilizar un computador,Que no se realice una conexión a la base de datos,que el servidor se caiga,que los datos proporcionados estén erróneos.}
+		\UCitem{viene de}{\UCref{CU0}{Control de acceso}}
+		\UCitem{Observaciones}{}
+		\UCitem{Estado}{En revisión}
+	\end{UseCase}
+%--------------------------------------
+	\begin{UCtrayectoria}{Principal}
+		\UCpaso incluye al caso de uso \UCref{IU0}{Control de Acceso}.
+		\UCpaso [\UCactor] presiona el botón \IUbutton{Cliente} que esta en la pantalla  \IUref{IU1}{Pantalla principal} 
+		\UCpaso verifica que los permisos de usuario sean permisos de cajero. \Trayref{A}
+		\UCpaso Despliega la pantalla \IUref{IU17}{Tabla  Clientes} 
+		\UCpaso [\UCactor] Presiona el botón \IUbutton{+Nuevo} en la pantalla \IUref{IU17}{Tabla cliente}
+		\UCpaso Despliega la pantalla \IUref{IU6}{Formulario Clientes}
+		\UCpaso [\UCactor] Llena los campos nombre,Apellido paterno, apellido Materno, Correo y Teléfono.\Trayref{A}
+		\UCpaso [\UCactor] lee con el lector de código de barras el número de la tarjeta.
+		\UCpaso llena el campo de ``Tarjeta" con lo que fue leído por el lector de Código de barras.\Trayref{B}
+		\UCpaso [\UCactor] presiona el botón \IUbutton{Guardar} del formulario.
+		\UCpaso Verifica que los campos Obligatorios no estén Vacíos(Nombre y apellidos).\Trayref{C}
+		\UCpaso Muestra el Mensaje {\bf MSG6-}``Confirmación[{\em ¿están los datos Correctos en el formulario? }].''.
+		\UCpaso [\UCactor] presiona el botón ``si".
+		\UCpaso Guarda al nuevo cliente en el sistema.
+		\UCpaso Muestra la pantalla \IUref{IU1}{Pantalla Principal}
+	\end{UCtrayectoria}
+
+%--------------------------------------		
+	\begin{UCtrayectoriaA}{A}{Permiso Denegado}
+			\UCpaso Muestra el Mensaje {\bf MSG4-}``Cancelado[{\em Permiso Denegado }].''.
+			\UCpaso Regresa al paso 1 de este caso de uso.
+		\end{UCtrayectoriaA}
+
+%--------------------------------------
+		\begin{UCtrayectoriaA}{B}{El lector de barras no pudo leer bien el código}
+			\UCpaso sigue su ejecución sin llenar el campo ``Tarjeta""
+			\UCpaso Continua en el paso 8 de este caso de uso.	
+		\end{UCtrayectoriaA}		
+%--------------------------------------
+			\begin{UCtrayectoriaA}{C}{Existe por lo menos un campo obligatoria que esta vació}
+			\UCpaso remarca con Rojo los campos obligatorios que están vacíos 
+			y pone la leyenda ``Campo Obligatorio".
+			\UCpaso Muestra el Mensaje {\bf MSG1-}``Error en la operación [{\em Campos obligatorios vacíos}] Los campos llenados con Rojo no pueden estar vacíos.''.
+			\UCpaso[\UCactor] Oprime el botón \IUbutton{Aceptar}
+			\UCpaso Regresa a la pantalla \IUref{IU6}{Formulario Clientes} Mostrando los campos en rojo y dejando la información introducida por el [\UCactor] en los pasos anteriores de este casos de uso.
+		\end{UCtrayectoriaA}
