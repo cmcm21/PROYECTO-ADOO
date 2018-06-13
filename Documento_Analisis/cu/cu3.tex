@@ -1,73 +1,85 @@
 \begin{UseCase}{CU3}{Registrar cajero}{
 		Registramos un nuevo cajero en el sistema, validamos los cajeros por sucursal asi como datos del cajero. 	
 	}
-		\UCitem{Versión}{\color{Gray}0.1.5}
-		\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
-		\UCitem{Supervisa}{\color{Gray} }
-		\UCitem{Actor}{Dueño}
-		\UCitem{Propósito}{Registrar cajeros en la sucursales donde faltan cajeros}
-		\UCitem{Entradas}{Correo del cajero,nombre, apellidos del cajero, telefono, salario, sucursal, turno}
-		\UCitem{Origen}{Teclado}
-		\UCitem{Salidas}{Registro de un cajero en una unica sucursal}
-		\UCitem{Destino}{Pantalla}
-		\UCitem{Precondiciones}{No tener dado de alta al cajero en el sistema en general, la sucursal debe tener un  numero valido de cajeros en el turno por asignar}
-		\UCitem{Postcondiciones}{Registro en el sistema de un cajero nuevo en una sucursal}
-		\UCitem{Errores}{No hay respuesta del servidor, no hay conección a internet, el correo ya este registrado en el sistema}
-		\UCitem{Observaciones}{}
-		\UCitem{Estado}{En revision}
-	\end{UseCase}
+	\UCitem{Versión}{\color{Gray}0.1.5}
+	\UCitem{Autor}{\color{Gray}Felipe Zamora Gachuz}
+	\UCitem{Supervisa}{\color{Gray}Miguel Correa Medina}
+	\UCitem{Actor}{Dueño}
+	\UCitem{Propósito}{}%Registrar cajeros en la sucursales donde faltan cajeros}
+	\UCitem{Entradas}{Correo del cajero,nombre, apellidos del cajero, telefono, salario, sucursal, turno}
+	\UCitem{Origen}{Teclado}
+	\UCitem{Salidas}{Registro de un cajero en una unica sucursal}
+	\UCitem{Destino}{Pantalla}
+	\UCitem{Precondiciones}{No tener dado de alta al cajero en el sistema en general, la sucursal debe tener un  numero valido de cajeros en el turno por asignar}
+	\UCitem{Postcondiciones}{Registro en el sistema de un cajero nuevo en una sucursal}
+	\UCitem{Errores}{No hay respuesta del servidor, no hay conexión a internet, el correo ya este registrado en el sistema}
+	\UCitem{Observaciones}{}
+	\UCitem{Estado}{En revisión}
+\end{UseCase}
 %--------------------------------------
-	\begin{UCtrayectoria}{Principal}
-		\UCpaso Incluye el caso de uso \UCref{CU0}{Control de acceso}.
-		\UCpaso [\UCactor] Tiene que tener permisos de dueño.
-		\UCpaso [\UCactor] Preciona la opcción cajero en el side-bar.
-		\UCpaso El sistema genera la lista despliegabre de las sucursales \Trayref{A}.
-		\UCpaso El sistema despliega la pantalla \IUref{IU18}{TablaCajeros}, boton  \IUbutton{+Nuevo}.
-		\UCpaso El sistema despliega la pantalla \IUref{IU7}{FormularioCajero}.
-		\UCpaso [\UCactor] Introduce los datos del formulario.
-		\UCpaso [\UCactor] Selecciona la sucursal en la que operara el cajero.
-		\UCpaso El sistema genera la lista despliegabre de los  turnos disponibles de la sucursal seleccionada \Trayref{A}.
-		\UCpaso [\UCactor] Selecciona el turno del cajero en que se ragistra.
-		\UCpaso [\UCactor]Preciona el boton \IUbutton{guardar} \Trayref{H}.
-		%---------------
-		%---------------
-		\UCpaso El sistema verifica el formulario no este vacio \Trayref{B}.
-		\UCpaso	El sistema verifica el correo se alfanumerico \Trayref{C}.
-		\UCpaso El sistema verifica el correo tenga arroba \Trayref{D}.
-		\UCpaso El sistema verifica el correo termine en .com o .mx \Trayref{E}
-		\UCpaso El sistema valida que salario sea numerico \Trayref{F}.%numeros en salario		
-		\UCpaso EL sistema registra el nuevo cajero en el sistema
-		\UCpaso El sistema regresa a la \IUref{IU18}{TablaCajeros}.
-		
-		
-	\end{UCtrayectoria}
+\begin{UCtrayectoria}{Principal}
+	\UCpaso Incluye el caso de uso \UCref{CU0}{Control de acceso}.
+	\UCpaso [\UCactor] Tiene que tener permisos de dueño.
+	\UCpaso [\UCactor] Presiona la opción cajero en la pantalla principal.
+	\UCpaso El sistema genera la lista despliegable de las sucursales \Trayref{A}.
+	\UCpaso El sistema despliega la pantalla \IUref{IU18}{TablaCajeros}.
+	\UCpaso [\UCactor]Preciona el boton  \IUbutton{+Nuevo} de la pantalla \IUref{IU18}{TablaCajeros}
+	\UCpaso El sistema genera la lista despliegable de las sucursales disponibles para agregar cajero\Trayref{A}.
+	\UCpaso El sistema despliega la pantalla \IUref{IU7}{FormularioCajero}\Trayref{H}.
+	\UCpaso [\UCactor] Introduce los datos del formulario \IUref{IU7}{FormularioCajero} \Trayref{H}.
+	\UCpaso [\UCactor] Selecciona la sucursal en la que operara el cajero\Trayref{H}.
+	\UCpaso El sistema genera la lista despliegable de los  turnos disponibles de la sucursal seleccionada \Trayref{A}.
+	\UCpaso [\UCactor] Selecciona el turno del cajero en que se registra\Trayref{H}.
+	\UCpaso [\UCactor]Presiona el boton \IUbutton{guardar} \Trayref{H}.
+	
+	%---------------
+	%---------------
+	\UCpaso El sistema verifica el formulario no este vacio \Trayref{B}.
+	\UCpaso	El sistema verifica el correo es alfanumerico \Trayref{C}.
+	\UCpaso El sistema verifica el correo tenga arroba \Trayref{D}.
+	\UCpaso El sistema verifica el correo termine en .com o .mx \Trayref{E}
+	\UCpaso El sistema verifica que salario sea numerico \Trayref{F}.%numeros en salario
+	%%
+	\UCpaso Despliega el mensaje {\bf MSG06-} {Confirmar Operación}. 
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Si!} \Trayref{H}.
+	\UCpaso Guarda la información del cajero.
+	%%
+	\UCpaso Despliega el mensaje {\bf MSG0-} {Operación Exitosa}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{OK}.
+	
+	%			
+	%		\UCpaso EL sistema registra el nuevo cajero en el sistema
+	%		\UCpaso El sistema regresa a la pantalla\IUref{IU18}{TablaCajeros}.
+	
+	
+\end{UCtrayectoria}
 
 %\textbf{NOTA:El numero de cajeros y supervisores es de 3 por sucursal.}
 %-------------------------------------------------------------------------
 
 \begin{UCtrayectoriaA}{A}{Sucursal no encontrada}
-			\UCpaso El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
-			\UCpaso El sistema regresa a la \IUref{IU18}{TablaCajeros}.
-		\end{UCtrayectoriaA}
+	\UCpaso El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+	\UCpaso El sistema regresa a la \IUref{IU18}{TablaCajeros}.
+\end{UCtrayectoriaA}
 %-------------------------------------------------------------------------
 
 \begin{UCtrayectoriaA}{B}{Hay datos del formulario que estan vacios}
 	\UCpaso El sistema muestra abajo en la pantalla el/los nombres de los campos vacios.
-	\UCpaso Continua en el paso 7 del \UCref{CU3}.
+	\UCpaso Continua en el paso 9 del \UCref{CU3}.
 \end{UCtrayectoriaA}	
 %-------------------------------------------------------------------------
 
 \begin{UCtrayectoriaA}{C}{Error no se detecta alfanumericos ates de arroba}
 	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
 	\UCpaso El sistema limpia el campo de correo.
-			\UCpaso Continua en el paso 7 del \UCref{CU3}.
-		\end{UCtrayectoriaA}
+	\UCpaso Continua en el paso 9 del \UCref{CU3}.
+\end{UCtrayectoriaA}
 %-------------------------------------------------------------------------
 
 \begin{UCtrayectoriaA}{D}{No se detecto arroba}
 	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
 	\UCpaso El sistema limpia el campo de correo.
-		\UCpaso Continua en el paso 7 del \UCref{CU3}.
+	\UCpaso Continua en el paso 9 del \UCref{CU3}.
 \end{UCtrayectoriaA}
 
 %-------------------------------------------------------------------------
@@ -75,14 +87,15 @@
 \begin{UCtrayectoriaA}{E}{No se deteto terminacion .com o .mx}
 	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
 	\UCpaso El sistema limpia el campo de correo.
-	 \UCpaso Continua en el paso 7 del \UCref{CU3}.
+	\UCpaso Continua en el paso 9 del \UCref{CU3}.
 \end{UCtrayectoriaA}
 
 %-------------------------------------------------------------------------
 
 \begin{UCtrayectoriaA}{F}{Datos alfanumericos detectados}
-			\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
-    	\UCpaso El sistema regresa a las pantallas del dueño.
+	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+	\UCpaso El sistema limpia el campo de salario.
+	\UCpaso Continua en el paso 9 del \UCref{CU3}.
 \end{UCtrayectoriaA}
 
 %--------------------------------------
