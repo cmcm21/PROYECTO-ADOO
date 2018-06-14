@@ -35,9 +35,9 @@
 	%---------------
 	%---------------
 	\UCpaso El sistema verifica el formulario no este vacio \Trayref{B}.
-	\UCpaso	El sistema verifica el correo es alfanumerico \Trayref{C}.
-	\UCpaso El sistema verifica el correo tenga arroba \Trayref{D}.
-	\UCpaso El sistema verifica el correo termine en .com o .mx \Trayref{E}
+	\UCpaso	El sistema verifica el correo es valido \Trayref{C}.
+	%\UCpaso El sistema verifica el correo tenga arroba \Trayref{D}.
+	%\UCpaso El sistema verifica el correo termine en .com o .mx \Trayref{E}
 	\UCpaso El sistema verifica que salario sea numerico \Trayref{F}.%numeros en salario
 	%%
 	\UCpaso Despliega el mensaje {\bf MSG06-} {Confirmar Operación}. 
@@ -69,26 +69,26 @@
 \end{UCtrayectoriaA}	
 %-------------------------------------------------------------------------
 
-\begin{UCtrayectoriaA}{C}{Error no se detecta alfanumericos ates de arroba}
+\begin{UCtrayectoriaA}{C}{Error no se detecto formato valido}
 	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
 	\UCpaso El sistema limpia el campo de correo.
 	\UCpaso Continua en el paso 9 del \UCref{CU3}.
 \end{UCtrayectoriaA}
 %-------------------------------------------------------------------------
-
-\begin{UCtrayectoriaA}{D}{No se detecto arroba}
-	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
-	\UCpaso El sistema limpia el campo de correo.
-	\UCpaso Continua en el paso 9 del \UCref{CU3}.
-\end{UCtrayectoriaA}
-
-%-------------------------------------------------------------------------
-
-\begin{UCtrayectoriaA}{E}{No se deteto terminacion .com o .mx}
-	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
-	\UCpaso El sistema limpia el campo de correo.
-	\UCpaso Continua en el paso 9 del \UCref{CU3}.
-\end{UCtrayectoriaA}
+%
+%\begin{UCtrayectoriaA}{D}{No se detecto arroba}
+%	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+%	\UCpaso El sistema limpia el campo de correo.
+%	\UCpaso Continua en el paso 9 del \UCref{CU3}.
+%\end{UCtrayectoriaA}
+%
+%%-------------------------------------------------------------------------
+%
+%\begin{UCtrayectoriaA}{E}{No se deteto terminacion .com o .mx}
+%	\UCpaso  El sistema muestra la pantalla {\bf MSG1-``Error en la Operación''}.
+%	\UCpaso El sistema limpia el campo de correo.
+%	\UCpaso Continua en el paso 9 del \UCref{CU3}.
+%\end{UCtrayectoriaA}
 
 %-------------------------------------------------------------------------
 

@@ -10,7 +10,7 @@
 		\UCitem{Origen}{Teclado}
 		\UCitem{Salidas}{Nombre del Proveedor, Correo Electrónico del Proveedor, Telefono, RFC, Estado.}
 		\UCitem{Destino}{Pantalla}
-		\UCitem{Precondiciones}{El proveedor aun no debe de estar registrado en el sistema.}
+		\UCitem{Precondiciones}{El proveedor aun no debe de estar registrado en el sistema, tener permisos de dueño.}
 		\UCitem{Postcondiciones}{Se tendrá un proveedor mas en la lista de los proveedores.}
 		\UCitem{Errores}{La pagina sea inaccesible por el momento debido a fallas con los servidores.}
 		\UCitem{Observaciones}{}
@@ -29,9 +29,9 @@
 		\UCpaso[\UCactor] Llena los datos con lo que se solicita en cada campo.
 		\UCpaso[\UCactor]Al finalizar presiona el botón \IUbutton{Guardar}.
 		\UCpaso Verifica que el nombre, apellido paterno y apellido materno sean alfabéticos. \Trayref{B}
-		\UCpaso Verifica que el correo sea alfanuméricos. \Trayref{C}
-		\UCpaso Verifica que el correo tenga arroba.  \Trayref{D}
-		\UCpaso Verifica que el correo tenga terminación en .com o .mx \Trayref{E}
+		\UCpaso Verifica el correo es valido \Trayref{C}.
+%		\UCpaso Verifica que el correo tenga arroba.  \Trayref{D}
+%		\UCpaso Verifica que el correo tenga terminación en .com o .mx \Trayref{E}
 		\UCpaso Verifica que el teléfono solo tenga valores numéricos. \Trayref{F}
 		\UCpaso Verifica que el RFC sea de máximo 13 dígitos. \Trayref{G}
 		\UCpaso Verifica que el RFC sea alfanumérico. \Trayref{H}
@@ -58,22 +58,22 @@
 		\end{UCtrayectoriaA}
 
 \begin{UCtrayectoriaA}{C}{Error}
-			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
-			\UCpaso El sistema genera el mensaje: Los campos del correo del proveedor no son alfanuméricos.
-			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la pantalla \IUref{IU8}{Proveedor Formulario}.''.
+			\UCpaso El sistema limpia el campo de correo.
+			\UCpaso Continua en el paso 8 del \UCref{CU3}.
 		\end{UCtrayectoriaA}
 
-\begin{UCtrayectoriaA}{D}{Error}
-			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
-			\UCpaso El sistema genera el mensaje: Los campos del correo del proveedor no tienen arroba.
-			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
-		\end{UCtrayectoriaA}
-
-\begin{UCtrayectoriaA}{E}{Error}
-			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Agregar proveedor}.''.
-			\UCpaso El sistema genera el mensaje:  Los campos del correo del proveedor no tienen terminación en .com o .mx
-			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
-		\end{UCtrayectoriaA}
+%\begin{UCtrayectoriaA}{D}{Error}
+%			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}] Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
+%			\UCpaso El sistema genera el mensaje: Los campos del correo del proveedor no tienen arroba.
+%			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+%		\end{UCtrayectoriaA}
+%
+%\begin{UCtrayectoriaA}{E}{Error}
+%			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Agregar proveedor}.''.
+%			\UCpaso El sistema genera el mensaje:  Los campos del correo del proveedor no tienen terminación en .com o .mx
+%			\UCpaso Lo muestra al final de la  \IUref{IU8}{Formulario Proveedor}.
+%		\end{UCtrayectoriaA}
 
 \begin{UCtrayectoriaA}{F}{Error}
 			\UCpaso Muestra el Mensaje {\bf MSG1-}`` Error [{\em Hubo un error en la operación}]Verifique que los datos ingresados correspondan con los datos solicitados en la  \IUref{IU8}{Proveedor Formulario}.''.
